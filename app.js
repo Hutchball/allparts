@@ -278,14 +278,9 @@ function addPartFromCard(equipment, type, label, el) {
 function addSet(equipment, qty, el) {
   const p = PACKAGES.find(x => x.equipment === equipment);
   if (!p) return;
-  const greaseQty = qty === 1 ? 5 : 10;
-  if (p.bearing)        addToBasket({ equipment, label: `Bearing — SKF ${p.bearing}`,       type: 'bearing',    qty });
-  if (p.housing)        addToBasket({ equipment, label: `Plummer Block — SKF ${p.housing}`, type: 'housing',    qty });
-  if (p.taper_lock)     addToBasket({ equipment, label: `Taper Lock — SKF ${p.taper_lock}`, type: 'taper_lock', qty });
-  if (p.seal)           addToBasket({ equipment, label: `Seal — ${p.seal}`,                 type: 'seal',       qty });
-  if (p.grease_type)    addToBasket({ equipment, label: `Grease — ${p.grease_type}`,        type: 'grease',     qty: greaseQty });
-  if (p.includes_gun)   addToBasket({ equipment, label: 'Grease Gun',                       type: 'gun',        qty: 1 });
-  if (p.includes_bolts) addToBasket({ equipment, label: 'Holding Down Bolts (pair)',        type: 'bolts',      qty: 1 });
+  if (p.bearing)    addToBasket({ equipment, label: `Bearing — SKF ${p.bearing}`,       type: 'bearing',    qty });
+  if (p.taper_lock) addToBasket({ equipment, label: `Taper Lock — SKF ${p.taper_lock}`, type: 'taper_lock', qty });
+  if (p.seal)       addToBasket({ equipment, label: `Seal Kit — ${p.seal}`,             type: 'seal',       qty });
   flyToBasket(el);
 }
 
