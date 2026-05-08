@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Parts Ltd — Industrial Bearing Packages, Liverpool</title>
+  <meta name="description" content="Tell us your equipment. We supply the complete bearing package — bearing, housing, taper lock, seals, grease and tools. One call, one delivery, job done. Liverpool and UK-wide.">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "All Parts Ltd",
+    "description": "Industrial bearing package supplier. Complete kits by equipment — bearing, plummer block, taper lock, seals, grease and tools.",
+    "url": "https://allpartsltd.co.uk",
+    "areaServed": "United Kingdom"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <a class="logo" href="#">All<span>Parts</span> Ltd</a>
+      <a href="tel:+44" class="header-phone">📞 Call for a quote</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Industrial Bearing Specialists</div>
+        <h1>Tell us the machine.<br><span>We send everything.</span></h1>
+        <p class="hero-sub">No part numbers. No hunting through catalogues. Just tell us your equipment and we'll supply the complete bearing package — bearing, housing, taper lock, seals, grease, grease gun and tools. One call. One delivery. Job done.</p>
+        <div class="hero-ctas">
+          <a href="#lookup" class="btn btn-primary">Find your parts pack →</a>
+          <a href="#contact" class="btn btn-secondary">Get a quote</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="images/banana.png" alt="All Parts Ltd mascot">
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how">
+    <div class="container">
+      <h2>How it works.</h2>
+      <p class="section-intro">Built for engineers on the job, not parts managers with a catalogue.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div>
+            <h3>Tell us your machine</h3>
+            <p>Call us or search below. Give us the equipment name — RB1 Drive, Conveyor 3 Tail, whatever you call it on site.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div>
+            <h3>We build the pack</h3>
+            <p>We match it to the correct bearing, housing, taper lock, seals and grease. Everything pre-selected — no wrong parts.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div>
+            <h3>One delivery, job done</h3>
+            <p>Everything arrives together. Bearing, plummer block, taper lock, grease gun, C spanner, bolts. Nothing to chase.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipment Lookup -->
+  <section class="section section-alt" id="lookup">
+    <div class="container" style="text-align:center;">
+      <h2>Find your parts package.</h2>
+      <p class="section-intro" style="margin:0 auto;">Search by equipment name. We'll show you the complete kit.</p>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="e.g. RB1 Drive, ELV 3 Boot, BB1 Tail…" autocomplete="off">
+        <button onclick="doSearch()">Search</button>
+      </div>
+      <div id="results"></div>
+    </div>
+  </section>
+
+  <!-- Brands -->
+  <div class="brands-strip">
+    <p>Authorised to supply</p>
+    <span class="brand-name">SK<span>F</span></span>
+    <span class="brand-name" style="opacity:0.4; font-size:1rem; color:rgba(255,255,255,0.4)">More brands coming soon</span>
+  </div>
+
+  <!-- Contact -->
+  <section class="section section-contact" id="contact">
+    <div class="container">
+      <h2>Get a quote.</h2>
+      <p class="section-intro">Tell us your site, your equipment, and we'll get back to you with a complete package price.</p>
+      <div class="contact-options">
+        <a href="tel:+44" class="contact-btn">📞 Call us</a>
+        <a href="mailto:info@allpartsltd.co.uk" class="contact-btn">✉ Email us</a>
+      </div>
+      <form class="contact-form" onsubmit="return false;">
+        <div class="form-row">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="e.g. John Smith">
+        </div>
+        <div class="form-row">
+          <label for="company">Company / Site</label>
+          <input type="text" id="company" name="company" placeholder="e.g. Royal Seaforth Grain Terminal">
+        </div>
+        <div class="form-row">
+          <label for="equipment">Equipment name</label>
+          <input type="text" id="equipment" name="equipment" placeholder="e.g. RB1 Drive, Conveyor 3 Tail">
+        </div>
+        <div class="form-row">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" placeholder="We'll call you back">
+        </div>
+        <div class="form-row">
+          <label for="notes">Anything else?</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Shaft size, urgency, anything useful"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send enquiry</button>
+        <p class="form-note">We'll respond same day where possible.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p><strong>All Parts Ltd</strong></p>
+      <p>Industrial Bearing Packages · SKF Authorised · UK Wide</p>
+      <p><a href="mailto:info@allpartsltd.co.uk">info@allpartsltd.co.uk</a></p>
+      <p class="footer-copy">© 2026 All Parts Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
