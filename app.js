@@ -240,7 +240,14 @@ function renderBasket() {
   const total = basketItems.reduce((s, i) => s + i.qty, 0);
   footerEl.innerHTML = `
     <div class="basket-total">${total} item${total !== 1 ? 's' : ''} in basket</div>
-    <button class="btn btn-primary basket-enquire-btn" onclick="enquireBasket()">Enquire about basket →</button>`;
+    <button class="btn btn-primary basket-enquire-btn" onclick="enquireBasket()">Enquire about basket →</button>
+    <button class="basket-clear-btn" onclick="clearBasket()">Empty basket</button>`;
+}
+
+function clearBasket() {
+  basketItems = [];
+  updateBasketBtn();
+  renderBasket();
 }
 
 function toggleBasket() {

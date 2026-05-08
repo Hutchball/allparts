@@ -447,10 +447,78 @@ footer a:hover { color: var(--orange-dark); }
 .result-card-incomplete { opacity: 0.75; }
 .result-card-incomplete:hover { border-color: var(--border); box-shadow: var(--shadow-sm); }
 
+/* ---- Empty basket button ---- */
+.basket-clear-btn {
+  display: block; width: 100%; background: none; border: none;
+  color: var(--muted); font-size: 0.82rem; font-family: var(--font);
+  margin-top: 10px; cursor: pointer; text-decoration: underline;
+  text-align: center; padding: 4px;
+}
+.basket-clear-btn:hover { color: #dc2626; }
+
 /* ---- Responsive ---- */
 @media (min-width: 640px) {
   .steps { grid-template-columns: 1fr 1fr; }
 }
 @media (min-width: 900px) {
   .steps { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+@media (max-width: 639px) {
+  /* Header — icon-only buttons on small screens */
+  .basket-label { display: none; }
+  .phone-label  { display: none; }
+  .basket-btn   { padding: 8px 12px; }
+  .header-phone { padding: 8px 14px; font-size: 1.1rem; }
+  .header-right { gap: 8px; }
+
+  /* Hero — hide image, tighten padding */
+  .hero { padding: 44px 0 32px; }
+  .hero-image { display: none; }
+  .hero h1 { font-size: 1.9rem; }
+  .hero-sub { font-size: 1rem; }
+  .hero-ctas { flex-direction: column; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+
+  /* Sections */
+  .section { padding: 52px 0; }
+  .section h2 { font-size: 1.6rem; }
+
+  /* Breadcrumb — smaller, allow wrap */
+  .breadcrumb-nav { gap: 6px; margin: 24px auto 0; }
+  .bc-item         { padding: 6px 12px; font-size: 0.82rem; }
+  .bc-dropdown-btn { padding: 6px 12px; font-size: 0.82rem; }
+  .belt-dropdown   { max-width: calc(100vw - 48px); left: 0; transform: none; }
+
+  /* Search */
+  .search-box { padding: 6px 6px 6px 14px; margin-top: 20px; }
+  .search-box button { padding: 10px 16px; font-size: 0.88rem; }
+
+  /* Result cards */
+  .result-header { flex-direction: column; gap: 6px; }
+  .result-shaft  { align-self: flex-start; }
+  .parts-grid    { grid-template-columns: 1fr 1fr; }
+
+  /* Card action buttons — stack vertically */
+  .card-actions { flex-direction: column; }
+  .card-btn { width: 100%; justify-content: center; }
+
+  /* Belt results header */
+  .belt-results-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+
+  /* Contact form */
+  .contact-form { padding: 28px 18px; }
+  .contact-options { flex-direction: column; }
+  .contact-btn { justify-content: center; }
+
+  /* Steps */
+  .step { padding: 22px; gap: 16px; }
+
+  /* Brands strip */
+  .brand-name { font-size: 1.5rem; }
+
+  /* Basket panel — full width on mobile already via min() */
+  .basket-panel-header { padding: 16px 18px; }
+  .basket-items        { padding: 6px 18px; }
+  .basket-panel-footer { padding: 16px 18px; }
 }
