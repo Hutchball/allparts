@@ -291,7 +291,7 @@ function addAllParts(equipment, el) {
   if (p.housing)    addToBasket({ equipment, label: `Plummer Block — SKF ${p.housing}`, type: 'housing',    qty: 2 });
   if (p.taper_lock) addToBasket({ equipment, label: `Taper Lock — SKF ${p.taper_lock}`, type: 'taper_lock', qty: 2 });
   if (p.seal)       addToBasket({ equipment, label: `Seal Pack — ${p.seal}`,             type: 'seal',       qty: 1 });
-                    addToBasket({ equipment, label: `Grease — ${p.grease_type || 'SKF LGEP2'}`, type: 'grease', qty: 10 });
+                    addToBasket({ equipment, label: `Grease (5 tubes) — ${p.grease_type || 'SKF LGEP2'}`, type: 'grease', qty: 2 });
                     addToBasket({ equipment, label: 'Grease Gun',                        type: 'gun',        qty: 1 });
                     addToBasket({ equipment, label: 'Holding Down Bolts (pair)',         type: 'bolts',      qty: 1 });
                     addToBasket({ equipment, label: 'Washers (small pack)',              type: 'washer',     qty: 1 });
