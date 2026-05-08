@@ -288,6 +288,28 @@ footer a:hover { color: var(--orange-dark); }
   padding: 2px 8px; border-radius: 999px; white-space: nowrap;
 }
 
+/* ---- Card action buttons ---- */
+.card-actions {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-top: 24px; padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.card-btn {
+  display: inline-flex; align-items: center;
+  padding: 10px 22px; border-radius: 999px;
+  font-size: 0.9rem; font-weight: 700; font-family: var(--font);
+  cursor: pointer; border: none; transition: transform 0.15s, background 0.2s;
+  white-space: nowrap;
+}
+.card-btn:hover { transform: translateY(-1px); }
+.card-btn-secondary {
+  background: var(--off-white); color: var(--navy);
+  border: 1.5px solid var(--border);
+}
+.card-btn-secondary:hover { background: var(--border); }
+.card-btn-primary { background: var(--orange); color: var(--white); }
+.card-btn-primary:hover { background: var(--orange-dark); }
+
 /* ---- Belt results ---- */
 .belt-results-header {
   display: flex; align-items: center; gap: 12px;

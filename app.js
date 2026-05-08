@@ -72,6 +72,11 @@ function renderCard(p) {
         ${p.includes_bolts ? `<div class="part-item"><div class="part-label">Holding Down Bolts</div><div class="part-value">Correct grade</div><div class="part-included">✓ Included</div></div>` : ''}
         ${p.notes ? `<div class="part-item" style="grid-column:1/-1"><div class="part-label">Notes</div><div class="part-value" style="font-weight:500;color:var(--muted)">${p.notes}</div></div>` : ''}
       </div>
+      <div class="card-actions">
+        <button class="card-btn card-btn-secondary" onclick="orderPackage('${p.equipment}', 1)">Buy one</button>
+        <button class="card-btn card-btn-secondary" onclick="orderPackage('${p.equipment}', 2)">Buy pair</button>
+        <button class="card-btn card-btn-primary" onclick="orderPackage('${p.equipment}', 'all')">Buy All Parts ★</button>
+      </div>
     </div>
   `;
 }
@@ -169,6 +174,20 @@ function selectBelt(belt) {
   `;
 
   results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ---- Order / Quote ----
+
+function orderPackage(equipment, qty) {
+  const field = document.getElementById('equipment');
+  if (field) {
+    if (qty === 'all') {
+      field.value = `${equipment} — Complete All Parts pack (bearing, taper lock, plummer block, bolts, 10 grease cartridges, grease gun)`;
+    } else {
+      field.value = `${equipment} ×${qty}`;
+    }
+  }
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
 }
 
 // ---- Init ----
