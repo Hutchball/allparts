@@ -278,7 +278,7 @@ function addSet(equipment, qty, el) {
   if (p.seal)           addToBasket({ equipment, label: `Seal — ${p.seal}`,                 type: 'seal',       qty });
   if (p.grease_type)    addToBasket({ equipment, label: `Grease — ${p.grease_type}`,        type: 'grease',     qty: greaseQty });
   if (p.includes_gun)   addToBasket({ equipment, label: 'Grease Gun',                       type: 'gun',        qty: 1 });
-  if (p.includes_bolts) addToBasket({ equipment, label: 'Holding Down Bolts',               type: 'bolts',      qty });
+  if (p.includes_bolts) addToBasket({ equipment, label: 'Holding Down Bolts (pair)',        type: 'bolts',      qty: 1 });
   flyToBasket(el);
 }
 
@@ -291,9 +291,9 @@ function addAllParts(equipment, el) {
   if (p.seal)       addToBasket({ equipment, label: `Seal Pack — ${p.seal}`,             type: 'seal',       qty: 1 });
                     addToBasket({ equipment, label: `Grease — ${p.grease_type || 'SKF LGEP2'}`, type: 'grease', qty: 10 });
                     addToBasket({ equipment, label: 'Grease Gun',                        type: 'gun',        qty: 1 });
-                    addToBasket({ equipment, label: 'Holding Down Bolts',                type: 'bolts',      qty: 2 });
-                    addToBasket({ equipment, label: 'Washers',                           type: 'washer',     qty: 10 });
-                    addToBasket({ equipment, label: 'Nuts',                              type: 'nut',        qty: 10 });
+                    addToBasket({ equipment, label: 'Holding Down Bolts (pair)',         type: 'bolts',      qty: 1 });
+                    addToBasket({ equipment, label: 'Washers (small pack)',              type: 'washer',     qty: 1 });
+                    addToBasket({ equipment, label: 'Nuts (pair)',                       type: 'nut',        qty: 1 });
   flyToBasket(el);
 }
 
