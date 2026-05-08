@@ -351,15 +351,16 @@ footer a:hover { color: var(--orange-dark); }
 .part-item { position: relative; }
 .part-add-btn {
   position: absolute; top: 8px; right: 8px;
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--orange); color: var(--white);
-  border: none; cursor: pointer; font-size: 1.15rem; font-weight: 700;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: #16a34a; color: var(--white);
+  border: none; cursor: pointer; font-size: 20px; font-weight: 400;
   display: flex; align-items: center; justify-content: center;
   opacity: 0; transition: opacity 0.15s, transform 0.15s;
   transform: scale(0.6); line-height: 1; padding: 0;
+  padding-bottom: 1px;
 }
 .part-item:hover .part-add-btn { opacity: 1; transform: scale(1); }
-.part-add-btn:hover { background: var(--orange-dark); }
+.part-add-btn:hover { background: #15803d; }
 
 /* ---- Breadcrumb Nav ---- */
 .breadcrumb-nav {
