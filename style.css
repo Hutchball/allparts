@@ -243,6 +243,124 @@ footer a { color: var(--orange); text-decoration: none; }
 footer a:hover { color: var(--orange-dark); }
 .footer-copy { font-size: 0.78rem; margin-top: 12px; opacity: 0.4; }
 
+/* ---- Header right group ---- */
+.header-right { display: flex; align-items: center; gap: 12px; }
+
+/* ---- Basket button (header) ---- */
+.basket-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.25);
+  color: var(--white); border-radius: 999px; padding: 8px 18px;
+  font-size: 0.92rem; font-weight: 700; font-family: var(--font);
+  cursor: pointer; transition: background 0.2s, border-color 0.2s;
+  position: relative;
+}
+.basket-btn:hover { background: rgba(255,255,255,0.18); }
+.basket-btn.has-items { border-color: var(--orange); background: rgba(249,115,22,0.18); }
+.basket-count {
+  background: var(--orange); color: var(--white);
+  font-size: 0.7rem; font-weight: 800;
+  width: 20px; height: 20px; border-radius: 50%;
+  align-items: center; justify-content: center;
+}
+@keyframes basket-bounce {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(1.3); }
+  65%  { transform: scale(0.88); }
+  100% { transform: scale(1); }
+}
+.basket-bounce { animation: basket-bounce 0.42s ease; }
+
+/* ---- Basket overlay ---- */
+.basket-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200; opacity: 0; pointer-events: none;
+  transition: opacity 0.25s;
+}
+.basket-overlay.open { opacity: 1; pointer-events: all; }
+
+/* ---- Basket panel ---- */
+.basket-panel {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(400px, 100vw);
+  background: var(--white); z-index: 201;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: -8px 0 40px rgba(0,0,0,0.18);
+}
+.basket-panel.open { transform: translateX(0); }
+
+.basket-panel-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 24px; background: var(--navy); color: var(--white);
+  flex-shrink: 0;
+}
+.basket-panel-title { font-size: 1.1rem; font-weight: 800; }
+.basket-close {
+  background: none; border: none; color: var(--white);
+  font-size: 1.3rem; cursor: pointer; padding: 4px 8px;
+  border-radius: var(--radius-sm); transition: background 0.15s;
+}
+.basket-close:hover { background: rgba(255,255,255,0.15); }
+
+.basket-items { flex: 1; overflow-y: auto; padding: 8px 24px; }
+.basket-empty {
+  color: var(--muted); font-size: 0.95rem;
+  text-align: center; padding: 48px 0; line-height: 1.9;
+}
+
+.basket-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.basket-item-info { flex: 1; min-width: 0; }
+.basket-item-label {
+  font-size: 0.87rem; font-weight: 700; color: var(--navy);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.basket-item-eq { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+.basket-item-qty {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+}
+.basket-item-qty button {
+  background: var(--off-white); border: 1px solid var(--border);
+  border-radius: 4px; width: 26px; height: 26px;
+  font-size: 1rem; font-weight: 700; cursor: pointer; color: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.1s;
+}
+.basket-item-qty button:hover { background: var(--border); }
+.basket-item-qty span { font-size: 0.95rem; font-weight: 700; min-width: 22px; text-align: center; }
+.basket-item-remove {
+  background: none; border: none; color: var(--muted);
+  cursor: pointer; font-size: 1rem; padding: 4px 6px;
+  border-radius: 4px; transition: color 0.15s; flex-shrink: 0;
+}
+.basket-item-remove:hover { color: #dc2626; }
+
+.basket-panel-footer {
+  padding: 20px 24px; border-top: 1px solid var(--border);
+  background: var(--off-white); flex-shrink: 0;
+}
+.basket-total { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-bottom: 12px; }
+.basket-enquire-btn { width: 100%; justify-content: center; }
+
+/* ---- Part item hover + button ---- */
+.part-item { position: relative; }
+.part-add-btn {
+  position: absolute; top: 8px; right: 8px;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--orange); color: var(--white);
+  border: none; cursor: pointer; font-size: 1.15rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.15s, transform 0.15s;
+  transform: scale(0.6); line-height: 1; padding: 0;
+}
+.part-item:hover .part-add-btn { opacity: 1; transform: scale(1); }
+.part-add-btn:hover { background: var(--orange-dark); }
+
 /* ---- Breadcrumb Nav ---- */
 .breadcrumb-nav {
   display: flex; align-items: center; gap: 8px;

@@ -38,9 +38,7 @@ const POSITIONS = ['DRIVE', 'SNUB', 'TAIL', 'BOOT', 'BEND', 'GTU'];
 
 function getBelt(equipment) {
   const parts = equipment.toUpperCase().split(' ');
-  if (POSITIONS.includes(parts[parts.length - 1])) {
-    return parts.slice(0, -1).join(' ');
-  }
+  if (POSITIONS.includes(parts[parts.length - 1])) return parts.slice(0, -1).join(' ');
   return equipment.toUpperCase();
 }
 
@@ -48,37 +46,49 @@ function isComplete(pkg) {
   return !!(pkg.bearing && pkg.taper_lock && (pkg.housing || pkg.seal));
 }
 
+// ---- Card renderer ----
+
+function partItem(eq, type, label, displayLabel, value, extra) {
+  return `
+    <div class="part-item">
+      <button class="part-add-btn" onclick="addPartFromCard('${eq}','${type}','${label}',this)" title="Add to basket">+</button>
+      <div class="part-label">${displayLabel}</div>
+      <div class="part-value">${value}</div>
+      ${extra ? `<div class="part-included">${extra}</div>` : ''}
+    </div>`;
+}
+
 function renderCard(p) {
   const complete = isComplete(p);
+  const eq = p.equipment;
   return `
     <div class="result-card${!complete ? ' result-card-incomplete' : ''}">
       <div class="result-header">
         <div>
-          <div class="result-title">${p.equipment}</div>
+          <div class="result-title">${eq}</div>
           <div class="result-customer">${p.customer}</div>
         </div>
         <div class="result-shaft">${p.shaft_type === 'imperial' ? p.shaft_imperial : p.shaft_mm + 'mm'} shaft</div>
       </div>
       ${!complete ? '<p class="incomplete-notice">⚠ Kit data incomplete — contact us for confirmed parts list</p>' : ''}
       <div class="parts-grid">
-        ${p.bearing ? `<div class="part-item"><div class="part-label">Bearing</div><div class="part-value">SKF ${p.bearing}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.bearing ? `<div class="part-item"><div class="part-label">Bore × OD × Width</div><div class="part-value">${p.bore_mm}×${p.od_mm}×${p.width_mm} mm</div></div>` : ''}
-        ${p.housing ? `<div class="part-item"><div class="part-label">Plummer Block</div><div class="part-value">SKF ${p.housing}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.taper_lock ? `<div class="part-item"><div class="part-label">Taper Lock</div><div class="part-value">SKF ${p.taper_lock}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.seal ? `<div class="part-item"><div class="part-label">Seal</div><div class="part-value">${p.seal}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.grease_type ? `<div class="part-item"><div class="part-label">Grease</div><div class="part-value">${p.grease_type}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.includes_gun ? `<div class="part-item"><div class="part-label">Grease Gun</div><div class="part-value">Standard</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.includes_spanner ? `<div class="part-item"><div class="part-label">C Spanner</div><div class="part-value">Correct size</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.includes_bolts ? `<div class="part-item"><div class="part-label">Holding Down Bolts</div><div class="part-value">Correct grade</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.bearing  ? partItem(eq,'bearing',  `Bearing — SKF ${p.bearing}`,       'Bearing',           `SKF ${p.bearing}`,      '✓ Included in All Parts') : ''}
+        ${p.bearing  ? `<div class="part-item"><div class="part-label">Bore × OD × Width</div><div class="part-value">${p.bore_mm}×${p.od_mm}×${p.width_mm} mm</div></div>` : ''}
+        ${p.housing  ? partItem(eq,'housing',  `Plummer Block — SKF ${p.housing}`, 'Plummer Block',     `SKF ${p.housing}`,      '✓ Included in All Parts') : ''}
+        ${p.taper_lock ? partItem(eq,'taper_lock',`Taper Lock — SKF ${p.taper_lock}`,'Taper Lock',     `SKF ${p.taper_lock}`,   '✓ Included in All Parts') : ''}
+        ${p.seal     ? partItem(eq,'seal',     `Seal — ${p.seal}`,                 'Seal',              p.seal,                  '✓ Included in All Parts') : ''}
+        ${p.grease_type ? partItem(eq,'grease',`Grease — ${p.grease_type}`,        'Grease',            p.grease_type,           '✓ Included in All Parts') : ''}
+        ${p.includes_gun     ? partItem(eq,'gun',    'Grease Gun',    'Grease Gun',    'Standard',     '✓ Included in All Parts') : ''}
+        ${p.includes_spanner ? partItem(eq,'spanner','C Spanner',     'C Spanner',     'Correct size', '✓ Included in All Parts') : ''}
+        ${p.includes_bolts   ? partItem(eq,'bolts',  'Holding Down Bolts','Holding Down Bolts','Correct grade','✓ Included in All Parts') : ''}
         ${p.notes ? `<div class="part-item" style="grid-column:1/-1"><div class="part-label">Notes</div><div class="part-value" style="font-weight:500;color:var(--muted)">${p.notes}</div></div>` : ''}
       </div>
       <div class="card-actions">
-        <button class="card-btn card-btn-secondary" onclick="orderPackage('${p.equipment}', 1)">Buy one</button>
-        <button class="card-btn card-btn-secondary" onclick="orderPackage('${p.equipment}', 2)">Buy pair</button>
-        <button class="card-btn card-btn-primary" onclick="orderPackage('${p.equipment}', 'all')">Buy All Parts ★</button>
+        <button class="card-btn card-btn-secondary" onclick="addSet('${eq}',1,this)">Buy one</button>
+        <button class="card-btn card-btn-secondary" onclick="addSet('${eq}',2,this)">Buy pair</button>
+        <button class="card-btn card-btn-primary"   onclick="addAllParts('${eq}',this)">Buy All Parts ★</button>
       </div>
-    </div>
-  `;
+    </div>`;
 }
 
 // ---- Search ----
@@ -93,15 +103,12 @@ function doSearch() {
     p.equipment.toLowerCase().includes(q) ||
     p.customer.toLowerCase().includes(q) ||
     (p.bearing && p.bearing.toLowerCase().includes(q)) ||
-    (p.housing && p.housing.toLowerCase().includes(q))
+    (p.housing  && p.housing.toLowerCase().includes(q))
   );
 
-  if (!matches.length) {
-    results.innerHTML = `<p class="no-results">No package found for "<strong>${q}</strong>". <a href="#contact">Contact us</a> and we'll build one.</p>`;
-    return;
-  }
-
-  results.innerHTML = matches.map(renderCard).join('');
+  results.innerHTML = matches.length
+    ? matches.map(renderCard).join('')
+    : `<p class="no-results">No package found for "<strong>${q}</strong>". <a href="#contact">Contact us</a> and we'll build one.</p>`;
 }
 
 // ---- Breadcrumb / Belt Browse ----
@@ -117,12 +124,10 @@ function buildBreadcrumb() {
   const dropdown = document.getElementById('beltDropdown');
   if (!dropdown) return;
 
-  const sortedBelts = Object.keys(beltComplete).sort();
-  dropdown.innerHTML = sortedBelts.map(belt => {
-    const complete = beltComplete[belt];
-    return `<div class="belt-option${!complete ? ' is-incomplete' : ''}" onclick="selectBelt('${belt}')">
-      <span>${belt}</span>
-      ${!complete ? '<span class="belt-incomplete-tag">incomplete</span>' : ''}
+  dropdown.innerHTML = Object.keys(beltComplete).sort().map(belt => {
+    const ok = beltComplete[belt];
+    return `<div class="belt-option${ok ? '' : ' is-incomplete'}" onclick="selectBelt('${belt}')">
+      <span>${belt}</span>${ok ? '' : '<span class="belt-incomplete-tag">incomplete</span>'}
     </div>`;
   }).join('');
 
@@ -136,19 +141,14 @@ function toggleBeltDropdown() {
   const dd = document.getElementById('beltDropdown');
   dd.style.display === 'none' ? openBeltDropdown() : closeBeltDropdown();
 }
-
 function openBeltDropdown() {
   document.getElementById('beltDropdown').style.display = 'block';
-  const arrow = document.getElementById('beltBtnArrow');
-  if (arrow) arrow.textContent = '▴';
+  const a = document.getElementById('beltBtnArrow'); if (a) a.textContent = '▴';
 }
-
 function closeBeltDropdown() {
   document.getElementById('beltDropdown').style.display = 'none';
-  const arrow = document.getElementById('beltBtnArrow');
-  if (arrow) arrow.textContent = '▾';
+  const a = document.getElementById('beltBtnArrow'); if (a) a.textContent = '▾';
 }
-
 function resetBeltBtn() {
   const btn = document.getElementById('beltBtn');
   if (btn) btn.innerHTML = 'Select belt <span id="beltBtnArrow">▾</span>';
@@ -158,7 +158,6 @@ function selectBelt(belt) {
   closeBeltDropdown();
   const btn = document.getElementById('beltBtn');
   if (btn) btn.innerHTML = `${belt} <span id="beltBtnArrow">▾</span>`;
-
   document.getElementById('searchInput').value = '';
 
   const matches = PACKAGES.filter(p => getBelt(p.equipment) === belt);
@@ -170,30 +169,178 @@ function selectBelt(belt) {
       <span class="belt-results-title">${belt} — ${matches.length} position${matches.length !== 1 ? 's' : ''}</span>
       ${hasIncomplete ? '<span class="belt-incomplete-badge">data incomplete</span>' : ''}
     </div>
-    ${matches.map(renderCard).join('')}
-  `;
+    ${matches.map(renderCard).join('')}`;
 
   results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// ---- Order / Quote ----
+// ---- Basket ----
 
-function orderPackage(equipment, qty) {
-  const field = document.getElementById('equipment');
-  if (field) {
-    if (qty === 'all') {
-      field.value = `${equipment} — Complete All Parts pack (bearing, taper lock, plummer block, bolts, 10 grease cartridges, grease gun)`;
-    } else {
-      field.value = `${equipment} ×${qty}`;
-    }
+let basketItems = [];
+let _nextId = 0;
+
+function addToBasket({ equipment, label, type, qty = 1 }) {
+  const existing = basketItems.find(i => i.equipment === equipment && i.label === label);
+  if (existing) { existing.qty += qty; }
+  else { basketItems.push({ id: ++_nextId, equipment, label, type, qty }); }
+  updateBasketBtn();
+  renderBasket();
+}
+
+function removeFromBasket(id) {
+  basketItems = basketItems.filter(i => i.id !== id);
+  updateBasketBtn();
+  renderBasket();
+}
+
+function changeQty(id, delta) {
+  const item = basketItems.find(i => i.id === id);
+  if (!item) return;
+  item.qty = Math.max(0, item.qty + delta);
+  if (item.qty === 0) basketItems = basketItems.filter(i => i.id !== id);
+  updateBasketBtn();
+  renderBasket();
+}
+
+function updateBasketBtn() {
+  const total = basketItems.reduce((s, i) => s + i.qty, 0);
+  const count = document.getElementById('basketCount');
+  if (!count) return;
+  count.textContent = total;
+  count.style.display = total > 0 ? 'flex' : 'none';
+  const btn = document.getElementById('basketBtn');
+  if (btn) btn.classList.toggle('has-items', total > 0);
+}
+
+function renderBasket() {
+  const itemsEl  = document.getElementById('basketItems');
+  const footerEl = document.getElementById('basketFooter');
+  if (!itemsEl) return;
+
+  if (!basketItems.length) {
+    itemsEl.innerHTML  = '<p class="basket-empty">Your basket is empty.<br>Find equipment above and add parts.</p>';
+    footerEl.innerHTML = '';
+    return;
   }
+
+  itemsEl.innerHTML = basketItems.map(item => `
+    <div class="basket-item">
+      <div class="basket-item-info">
+        <div class="basket-item-label" title="${item.label}">${item.label}</div>
+        <div class="basket-item-eq">${item.equipment}</div>
+      </div>
+      <div class="basket-item-qty">
+        <button onclick="changeQty(${item.id},-1)">−</button>
+        <span>${item.qty}</span>
+        <button onclick="changeQty(${item.id},1)">+</button>
+      </div>
+      <button class="basket-item-remove" onclick="removeFromBasket(${item.id})" title="Remove">✕</button>
+    </div>`).join('');
+
+  const total = basketItems.reduce((s, i) => s + i.qty, 0);
+  footerEl.innerHTML = `
+    <div class="basket-total">${total} item${total !== 1 ? 's' : ''} in basket</div>
+    <button class="btn btn-primary basket-enquire-btn" onclick="enquireBasket()">Enquire about basket →</button>`;
+}
+
+function toggleBasket() {
+  const panel   = document.getElementById('basketPanel');
+  const overlay = document.getElementById('basketOverlay');
+  if (!panel) return;
+  const opening = !panel.classList.contains('open');
+  panel.classList.toggle('open', opening);
+  overlay.classList.toggle('open', opening);
+  document.body.style.overflow = opening ? 'hidden' : '';
+}
+
+function enquireBasket() {
+  const lines = basketItems.map(i => `• ${i.label} ×${i.qty}  (${i.equipment})`).join('\n');
+  const notesEl = document.getElementById('notes');
+  if (notesEl) notesEl.value = lines;
+  toggleBasket();
   document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ---- Add helpers ----
+
+function addPartFromCard(equipment, type, label, el) {
+  addToBasket({ equipment, label, type });
+  flyToBasket(el);
+}
+
+function addSet(equipment, qty, el) {
+  const p = PACKAGES.find(x => x.equipment === equipment);
+  if (!p) return;
+  if (p.bearing)        addToBasket({ equipment, label: `Bearing — SKF ${p.bearing}`,       type: 'bearing',    qty });
+  if (p.housing)        addToBasket({ equipment, label: `Plummer Block — SKF ${p.housing}`, type: 'housing',    qty });
+  if (p.taper_lock)     addToBasket({ equipment, label: `Taper Lock — SKF ${p.taper_lock}`, type: 'taper_lock', qty });
+  if (p.seal)           addToBasket({ equipment, label: `Seal — ${p.seal}`,                 type: 'seal',       qty });
+  if (p.grease_type)    addToBasket({ equipment, label: `Grease — ${p.grease_type}`,        type: 'grease',     qty });
+  if (p.includes_gun)   addToBasket({ equipment, label: 'Grease Gun',                       type: 'gun',        qty });
+  if (p.includes_bolts) addToBasket({ equipment, label: 'Holding Down Bolts',               type: 'bolts',      qty });
+  flyToBasket(el);
+}
+
+function addAllParts(equipment, el) {
+  const p = PACKAGES.find(x => x.equipment === equipment);
+  if (!p) return;
+  if (p.bearing)    addToBasket({ equipment, label: `Bearing — SKF ${p.bearing}`,                       type: 'bearing',    qty: 1 });
+  if (p.housing)    addToBasket({ equipment, label: `Plummer Block — SKF ${p.housing}`,                 type: 'housing',    qty: 1 });
+  if (p.taper_lock) addToBasket({ equipment, label: `Taper Lock — SKF ${p.taper_lock}`,                 type: 'taper_lock', qty: 1 });
+  if (p.seal)       addToBasket({ equipment, label: `Seal — ${p.seal}`,                                 type: 'seal',       qty: 1 });
+                    addToBasket({ equipment, label: `Grease — ${p.grease_type || 'SKF LGEP2'} ×10 cartridges`, type: 'grease', qty: 1 });
+                    addToBasket({ equipment, label: 'Grease Gun',                                        type: 'gun',   qty: 1 });
+                    addToBasket({ equipment, label: 'Holding Down Bolts',                                type: 'bolts', qty: 1 });
+  flyToBasket(el);
+}
+
+// ---- Animation ----
+
+function flyToBasket(sourceEl) {
+  const btn = document.getElementById('basketBtn');
+  if (!btn || !sourceEl) return;
+
+  const src = sourceEl.getBoundingClientRect();
+  const dst = btn.getBoundingClientRect();
+
+  const dot = document.createElement('div');
+  dot.style.cssText = [
+    'position:fixed',
+    `left:${src.left + src.width  / 2}px`,
+    `top:${src.top  + src.height / 2}px`,
+    'width:13px','height:13px',
+    'background:#f97316',
+    'border-radius:50%',
+    'z-index:9999',
+    'pointer-events:none',
+    'transform:translate(-50%,-50%)',
+  ].join(';');
+  document.body.appendChild(dot);
+
+  dot.getBoundingClientRect(); // force reflow
+  dot.style.transition = [
+    'left 0.52s cubic-bezier(0.4,0,0.2,1)',
+    'top 0.52s cubic-bezier(0.4,0,0.2,1)',
+    'opacity 0.2s 0.35s',
+    'transform 0.52s',
+  ].join(',');
+  dot.style.left      = `${dst.left + dst.width  / 2}px`;
+  dot.style.top       = `${dst.top  + dst.height / 2}px`;
+  dot.style.opacity   = '0';
+  dot.style.transform = 'translate(-50%,-50%) scale(0.15)';
+
+  setTimeout(() => {
+    dot.remove();
+    btn.classList.add('basket-bounce');
+    setTimeout(() => btn.classList.remove('basket-bounce'), 450);
+  }, 560);
 }
 
 // ---- Init ----
 
 document.addEventListener('DOMContentLoaded', () => {
   buildBreadcrumb();
+  renderBasket();
   document.getElementById('searchInput').addEventListener('keydown', e => {
     if (e.key === 'Enter') doSearch();
   });
