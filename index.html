@@ -81,7 +81,20 @@
   <section class="section section-alt" id="lookup">
     <div class="container" style="text-align:center;">
       <h2>Find your parts package.</h2>
-      <p class="section-intro" style="margin:0 auto;">Search by equipment name. We'll show you the complete kit.</p>
+      <p class="section-intro" style="margin:0 auto;">Browse by belt or search by name. We'll show you the complete kit.</p>
+
+      <!-- Breadcrumb browse -->
+      <div class="breadcrumb-nav">
+        <span class="bc-item">Peel Ports</span>
+        <span class="bc-sep">›</span>
+        <span class="bc-item">Grain Terminal</span>
+        <span class="bc-sep">›</span>
+        <div class="belt-select-wrap" id="beltSelectWrap">
+          <button class="bc-dropdown-btn" id="beltBtn" onclick="toggleBeltDropdown()">Select belt <span id="beltBtnArrow">▾</span></button>
+          <div class="belt-dropdown" id="beltDropdown" style="display:none"></div>
+        </div>
+      </div>
+
       <div class="search-box">
         <input type="text" id="searchInput" placeholder="e.g. RB1 Drive, ELV 3 Boot, BB1 Tail…" autocomplete="off">
         <button onclick="doSearch()">Search</button>

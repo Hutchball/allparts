@@ -1,5 +1,4 @@
 // All Parts Ltd — app.js
-// All Parts Ltd Data
 
 const PACKAGES = [
   {"customer":"Royal Seaforth Grain Terminal","equipment":"BB1 BEND","shaft_imperial":"2 3/4\"","shaft_mm":69.85,"shaft_type":"imperial","pulley_dia":"18\"","bearing":"22216 E","bore_mm":80.0,"od_mm":140.0,"width_mm":33.0,"c_kn":290.0,"c0_kn":355.0,"housing":"SN 22516E","taper_lock":"H316","seal":null,"grease_type":"SKF LGEP2","includes_gun":1,"includes_spanner":1,"includes_bolts":1,"notes":""},
@@ -33,9 +32,56 @@ const PACKAGES = [
   {"customer":"Royal Seaforth Grain Terminal","equipment":"RB9 GTU","shaft_imperial":"3\"","shaft_mm":76.2,"shaft_type":"imperial","pulley_dia":"18\"","bearing":"22217 E","bore_mm":85.0,"od_mm":150.0,"width_mm":36.0,"c_kn":340.0,"c0_kn":415.0,"housing":null,"taper_lock":"HE317","seal":null,"grease_type":"SKF LGEP2","includes_gun":1,"includes_spanner":1,"includes_bolts":1,"notes":"H317T/L"}
 ];
 
+// ---- Helpers ----
+
+const POSITIONS = ['DRIVE', 'SNUB', 'TAIL', 'BOOT', 'BEND', 'GTU'];
+
+function getBelt(equipment) {
+  const parts = equipment.toUpperCase().split(' ');
+  if (POSITIONS.includes(parts[parts.length - 1])) {
+    return parts.slice(0, -1).join(' ');
+  }
+  return equipment.toUpperCase();
+}
+
+function isComplete(pkg) {
+  return !!(pkg.bearing && pkg.taper_lock && (pkg.housing || pkg.seal));
+}
+
+function renderCard(p) {
+  const complete = isComplete(p);
+  return `
+    <div class="result-card${!complete ? ' result-card-incomplete' : ''}">
+      <div class="result-header">
+        <div>
+          <div class="result-title">${p.equipment}</div>
+          <div class="result-customer">${p.customer}</div>
+        </div>
+        <div class="result-shaft">${p.shaft_type === 'imperial' ? p.shaft_imperial : p.shaft_mm + 'mm'} shaft</div>
+      </div>
+      ${!complete ? '<p class="incomplete-notice">⚠ Kit data incomplete — contact us for confirmed parts list</p>' : ''}
+      <div class="parts-grid">
+        ${p.bearing ? `<div class="part-item"><div class="part-label">Bearing</div><div class="part-value">SKF ${p.bearing}</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.bearing ? `<div class="part-item"><div class="part-label">Bore × OD × Width</div><div class="part-value">${p.bore_mm}×${p.od_mm}×${p.width_mm} mm</div></div>` : ''}
+        ${p.housing ? `<div class="part-item"><div class="part-label">Plummer Block</div><div class="part-value">SKF ${p.housing}</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.taper_lock ? `<div class="part-item"><div class="part-label">Taper Lock</div><div class="part-value">SKF ${p.taper_lock}</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.seal ? `<div class="part-item"><div class="part-label">Seal</div><div class="part-value">${p.seal}</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.grease_type ? `<div class="part-item"><div class="part-label">Grease</div><div class="part-value">${p.grease_type}</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.includes_gun ? `<div class="part-item"><div class="part-label">Grease Gun</div><div class="part-value">Standard</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.includes_spanner ? `<div class="part-item"><div class="part-label">C Spanner</div><div class="part-value">Correct size</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.includes_bolts ? `<div class="part-item"><div class="part-label">Holding Down Bolts</div><div class="part-value">Correct grade</div><div class="part-included">✓ Included</div></div>` : ''}
+        ${p.notes ? `<div class="part-item" style="grid-column:1/-1"><div class="part-label">Notes</div><div class="part-value" style="font-weight:500;color:var(--muted)">${p.notes}</div></div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// ---- Search ----
+
 function doSearch() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const results = document.getElementById('results');
+  resetBeltBtn();
   if (!q) { results.innerHTML = ''; return; }
 
   const matches = PACKAGES.filter(p =>
@@ -50,31 +96,86 @@ function doSearch() {
     return;
   }
 
-  results.innerHTML = matches.map(p => `
-    <div class="result-card">
-      <div class="result-header">
-        <div>
-          <div class="result-title">${p.equipment}</div>
-          <div class="result-customer">${p.customer}</div>
-        </div>
-        <div class="result-shaft">${p.shaft_type === 'imperial' ? p.shaft_imperial : p.shaft_mm + 'mm'} shaft</div>
-      </div>
-      <div class="parts-grid">
-        ${p.bearing ? `<div class="part-item"><div class="part-label">Bearing</div><div class="part-value">SKF ${p.bearing}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.bearing ? `<div class="part-item"><div class="part-label">Bore × OD × Width</div><div class="part-value">${p.bore_mm}×${p.od_mm}×${p.width_mm} mm</div></div>` : ''}
-        ${p.housing ? `<div class="part-item"><div class="part-label">Plummer Block</div><div class="part-value">SKF ${p.housing}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.taper_lock ? `<div class="part-item"><div class="part-label">Taper Lock</div><div class="part-value">SKF ${p.taper_lock}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.seal ? `<div class="part-item"><div class="part-label">Seal</div><div class="part-value">${p.seal}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.grease_type ? `<div class="part-item"><div class="part-label">Grease</div><div class="part-value">${p.grease_type}</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.includes_gun ? `<div class="part-item"><div class="part-label">Grease Gun</div><div class="part-value">Standard</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.includes_spanner ? `<div class="part-item"><div class="part-label">C Spanner</div><div class="part-value">Correct size</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.includes_bolts ? `<div class="part-item"><div class="part-label">Holding Down Bolts</div><div class="part-value">Correct grade</div><div class="part-included">✓ Included</div></div>` : ''}
-        ${p.notes ? `<div class="part-item" style="grid-column:1/-1"><div class="part-label">Notes</div><div class="part-value" style="font-weight:500;color:var(--muted)">${p.notes}</div></div>` : ''}
-      </div>
-    </div>
-  `).join('');
+  results.innerHTML = matches.map(renderCard).join('');
 }
 
-document.getElementById('searchInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') doSearch();
+// ---- Breadcrumb / Belt Browse ----
+
+function buildBreadcrumb() {
+  const beltComplete = {};
+  PACKAGES.forEach(p => {
+    const belt = getBelt(p.equipment);
+    if (!(belt in beltComplete)) beltComplete[belt] = true;
+    if (!isComplete(p)) beltComplete[belt] = false;
+  });
+
+  const dropdown = document.getElementById('beltDropdown');
+  if (!dropdown) return;
+
+  const sortedBelts = Object.keys(beltComplete).sort();
+  dropdown.innerHTML = sortedBelts.map(belt => {
+    const complete = beltComplete[belt];
+    return `<div class="belt-option${!complete ? ' is-incomplete' : ''}" onclick="selectBelt('${belt}')">
+      <span>${belt}</span>
+      ${!complete ? '<span class="belt-incomplete-tag">incomplete</span>' : ''}
+    </div>`;
+  }).join('');
+
+  document.addEventListener('click', e => {
+    const wrap = document.getElementById('beltSelectWrap');
+    if (wrap && !wrap.contains(e.target)) closeBeltDropdown();
+  });
+}
+
+function toggleBeltDropdown() {
+  const dd = document.getElementById('beltDropdown');
+  dd.style.display === 'none' ? openBeltDropdown() : closeBeltDropdown();
+}
+
+function openBeltDropdown() {
+  document.getElementById('beltDropdown').style.display = 'block';
+  const arrow = document.getElementById('beltBtnArrow');
+  if (arrow) arrow.textContent = '▴';
+}
+
+function closeBeltDropdown() {
+  document.getElementById('beltDropdown').style.display = 'none';
+  const arrow = document.getElementById('beltBtnArrow');
+  if (arrow) arrow.textContent = '▾';
+}
+
+function resetBeltBtn() {
+  const btn = document.getElementById('beltBtn');
+  if (btn) btn.innerHTML = 'Select belt <span id="beltBtnArrow">▾</span>';
+}
+
+function selectBelt(belt) {
+  closeBeltDropdown();
+  const btn = document.getElementById('beltBtn');
+  if (btn) btn.innerHTML = `${belt} <span id="beltBtnArrow">▾</span>`;
+
+  document.getElementById('searchInput').value = '';
+
+  const matches = PACKAGES.filter(p => getBelt(p.equipment) === belt);
+  const hasIncomplete = matches.some(p => !isComplete(p));
+  const results = document.getElementById('results');
+
+  results.innerHTML = `
+    <div class="belt-results-header">
+      <span class="belt-results-title">${belt} — ${matches.length} position${matches.length !== 1 ? 's' : ''}</span>
+      ${hasIncomplete ? '<span class="belt-incomplete-badge">data incomplete</span>' : ''}
+    </div>
+    ${matches.map(renderCard).join('')}
+  `;
+
+  results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+// ---- Init ----
+
+document.addEventListener('DOMContentLoaded', () => {
+  buildBreadcrumb();
+  document.getElementById('searchInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doSearch();
+  });
 });

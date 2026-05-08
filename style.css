@@ -243,6 +243,69 @@ footer a { color: var(--orange); text-decoration: none; }
 footer a:hover { color: var(--orange-dark); }
 .footer-copy { font-size: 0.78rem; margin-top: 12px; opacity: 0.4; }
 
+/* ---- Breadcrumb Nav ---- */
+.breadcrumb-nav {
+  display: flex; align-items: center; gap: 8px;
+  justify-content: center; flex-wrap: wrap;
+  margin: 36px auto 0;
+}
+.bc-item {
+  color: var(--navy); font-weight: 700; font-size: 0.92rem;
+  padding: 8px 18px; background: var(--white);
+  border: 1.5px solid var(--border); border-radius: 999px;
+}
+.bc-sep { color: var(--muted); font-size: 1.1rem; }
+.belt-select-wrap { position: relative; }
+.bc-dropdown-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--white); font-weight: 700; font-size: 0.92rem;
+  padding: 8px 18px; background: var(--navy);
+  border: 1.5px solid var(--navy); border-radius: 999px;
+  font-family: var(--font); cursor: pointer;
+  transition: background 0.15s;
+}
+.bc-dropdown-btn:hover { background: var(--navy-light); border-color: var(--navy-light); }
+.belt-dropdown {
+  position: absolute; top: calc(100% + 8px); left: 50%;
+  transform: translateX(-50%);
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: var(--radius); box-shadow: var(--shadow-lg);
+  min-width: 180px; z-index: 50;
+  max-height: 320px; overflow-y: auto;
+  text-align: left;
+}
+.belt-option {
+  padding: 10px 20px; cursor: pointer;
+  font-size: 0.92rem; font-weight: 600; color: var(--navy);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; transition: background 0.1s;
+}
+.belt-option:hover { background: var(--off-white); }
+.belt-option.is-incomplete { color: var(--muted); }
+.belt-incomplete-tag {
+  font-size: 0.68rem; font-weight: 600;
+  background: var(--border); color: var(--muted);
+  padding: 2px 8px; border-radius: 999px; white-space: nowrap;
+}
+
+/* ---- Belt results ---- */
+.belt-results-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 20px; text-align: left; flex-wrap: wrap;
+}
+.belt-results-title { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+.belt-incomplete-badge {
+  font-size: 0.75rem; font-weight: 600;
+  background: #fef3c7; color: #92400e;
+  padding: 3px 10px; border-radius: 999px;
+}
+.incomplete-notice {
+  color: var(--muted); font-size: 0.85rem;
+  margin-bottom: 16px; text-align: left;
+}
+.result-card-incomplete { opacity: 0.75; }
+.result-card-incomplete:hover { border-color: var(--border); box-shadow: var(--shadow-sm); }
+
 /* ---- Responsive ---- */
 @media (min-width: 640px) {
   .steps { grid-template-columns: 1fr 1fr; }
