@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Parts Ltd — Industrial Bearing Packages, Liverpool</title>
-  <meta name="description" content="Tell us your equipment. We supply the complete bearing package — bearing, housing, taper lock, seals, grease and tools. One call, one delivery, job done. Liverpool and UK-wide.">
+  <title>All Parts Ltd | Industrial Bearing Packages | Bearing Supplier Liverpool</title>
+  <meta name="description" content="Complete bearing packages for industrial equipment — SKF bearings, plummer blocks, taper lock bushes, grease and tools in one delivery. Name your machine, we sort the rest. Bearing supplier based in Liverpool. Industrial bearings UK.">
   <link rel="stylesheet" href="style.css">
-
+  <!-- PLACEHOLDER: Update schema URL and areaServed when live domain and address are confirmed -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -20,77 +20,183 @@
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <div class="container header-inner">
-      <a class="logo" href="#">All<span>Parts</span> Ltd</a>
-      <div class="header-right">
-        <button class="basket-btn" id="basketBtn" onclick="toggleBasket()">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <span class="basket-label">Basket</span>
-          <span class="basket-count" id="basketCount" style="display:none">0</span>
-        </button>
-        <a href="tel:+44" class="header-phone">📞 <span class="phone-label">Call for a quote</span></a>
+  <!-- ================================================================
+       HEADER
+       ================================================================ -->
+  <header class="site-header" id="top">
+    <div class="container">
+      <div class="header-inner">
+
+        <!-- PLACEHOLDER: Replace .logo with final SVG/PNG logo when ready -->
+        <a class="logo" href="#top" aria-label="All Parts Ltd — home">
+          All<span>Parts</span> Ltd
+        </a>
+
+
+        <div class="header-right">
+          <!-- Basket button -->
+          <button class="basket-btn" id="basketBtn" onclick="toggleBasket()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            <span class="basket-label">Basket</span>
+            <span class="basket-count" id="basketCount" style="display:none">0</span>
+          </button>
+          <!-- PLACEHOLDER: Replace href and label with real phone number -->
+          <a href="tel:+44" class="header-phone">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.42 2 2 0 0 1 3.62 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.1 6.1l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="phone-label">Call for a quote</span>
+          </a>
+        </div>
+
       </div>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <div class="hero-eyebrow">Industrial Bearing Specialists</div>
-        <h1>Tell us the machine.<br><span>We send everything.</span></h1>
-        <p class="hero-sub">No part numbers. No hunting through catalogues. Just tell us your equipment and we'll supply the complete bearing package — bearing, housing, taper lock, seals, grease, grease gun and tools. One call. One delivery. Job done.</p>
-        <div class="hero-ctas">
-          <a href="#lookup" class="btn btn-primary">Find your parts pack →</a>
-          <a href="#contact" class="btn btn-secondary">Get a quote</a>
+
+  <!-- ================================================================
+       HERO
+       ================================================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-inner">
+
+        <div class="hero-text">
+          <div class="hero-eyebrow">Industrial Bearing Specialists</div>
+          <h1>Name the machine.<br><span>Forget the part number.</span></h1>
+          <p class="hero-sub">Complete bearing packages for industrial equipment. One order, one delivery — SKF bearing, housing, bush, bolts, grease and all.</p>
+          <div class="hero-ctas">
+            <a href="#lookup" class="btn btn-primary">Find your parts pack →</a>
+            <a href="#contact" class="btn btn-secondary">Get a quote</a>
+          </div>
         </div>
+
+        <div class="hero-image">
+          <!--
+            PLACEHOLDER: Swap for final cartoon banana mascot artwork.
+            Replace this entire .mascot-placeholder div with:
+            <img src="images/banana.png" alt="" class="mascot-img" aria-hidden="true">
+            (alt="" is correct — it's decorative; meaning is carried by the headline)
+
+            The image already has a path set from a previous session (images/banana.png).
+            Paul: drop the final artwork into the images/ folder with that filename.
+          -->
+          <img src="images/banana.png" alt="" class="mascot-img" aria-hidden="true">
+        </div>
+
       </div>
-      <div class="hero-image">
-        <img src="images/banana.png" alt="All Parts Ltd mascot">
-      </div>
+    </div>
+    <!-- Decorative wave — transitions into the next section's background -->
+    <div class="hero-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f8fafc"/>
+      </svg>
     </div>
   </section>
 
-  <!-- How it works -->
-  <section class="section" id="how">
+
+  <!-- ================================================================
+       THE IDEA
+       ================================================================ -->
+  <section class="section idea-section" id="idea">
+    <div class="container">
+
+      <div class="idea-intro">
+        <p class="section-eyebrow">The Idea</p>
+        <h2>You know your equipment. You shouldn't have to know the part numbers too.</h2>
+        <p class="section-intro">All Parts maps your machine to a complete bearing pack — the right SKF bearing, plummer block, taper lock bush, holding-down bolts, correct grease and the tools to apply it. Everything to do the job, in one order.</p>
+      </div>
+
+      <blockquote class="idea-quote">
+        "No spec hunting. No wrong parts. Just sorted."
+      </blockquote>
+
+      <div class="features">
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <!-- PLACEHOLDER: Vera to supply -->
+          <h3>Complete packages</h3>
+          <p>Every bearing pack includes everything for the job — bearing, housing, bush, bolts, correct grease, grease gun, and C spanner. Nothing missing.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <!-- PLACEHOLDER: Vera to supply -->
+          <h3>Correct spec, guaranteed</h3>
+          <p>Each package is pre-matched to the right bearing specification, compatible accessories, and the grease the manufacturer recommends. No substitutes.</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          </div>
+          <!-- PLACEHOLDER: Vera to supply -->
+          <h3>One delivery</h3>
+          <p>No chasing three suppliers. Everything arrives together, correctly packaged, ready for your maintenance team to fit immediately.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       HOW IT WORKS
+       ================================================================ -->
+  <section class="section section-alt" id="how-it-works">
     <div class="container">
       <h2>How it works.</h2>
       <p class="section-intro">Built for engineers on the job, not parts managers with a catalogue.</p>
       <div class="steps">
+
         <div class="step">
           <div class="step-num">1</div>
           <div>
-            <h3>Tell us your machine</h3>
-            <p>Call us or search below. Give us the equipment name — RB1 Drive, Conveyor 3 Tail, whatever you call it on site.</p>
+            <h3>Find your equipment</h3>
+            <p>Search by machine, belt, or conveyor name — whatever you call it on site.</p>
           </div>
         </div>
+
         <div class="step">
           <div class="step-num">2</div>
           <div>
-            <h3>We build the pack</h3>
-            <p>We match it to the correct bearing, housing, taper lock, seals and grease. Everything pre-selected — no wrong parts.</p>
+            <h3>See the complete pack</h3>
+            <p>Every part you need to do the job, specced and ready. No wrong parts.</p>
           </div>
         </div>
+
         <div class="step">
           <div class="step-num">3</div>
           <div>
-            <h3>One delivery, job done</h3>
-            <p>Everything arrives together. Bearing, plummer block, taper lock, grease gun, C spanner, bolts. Nothing to chase.</p>
+            <h3>Order and we deliver</h3>
+            <p>One box, everything included, nothing to chase.</p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Equipment Lookup -->
-  <section class="section section-alt" id="lookup">
-    <div class="container" style="text-align:center;">
-      <h2>Find your parts package.</h2>
-      <p class="section-intro" style="margin:0 auto;">Browse by belt or search by name. We'll show you the complete kit.</p>
 
-      <!-- Breadcrumb browse -->
+  <!-- ================================================================
+       EQUIPMENT LOOKUP
+       ================================================================ -->
+  <section class="section" id="lookup">
+    <div class="container" style="text-align:center;">
+
+      <h2>Find your parts package.</h2>
+      <p class="section-intro" style="margin:0 auto;">What's the machine? We'll show you exactly what you need.</p>
+
+      <!--
+        Breadcrumb browse — currently hardcoded to Peel Ports > Grain Terminal.
+        PLACEHOLDER: This will be driven dynamically by the customer/site data in PACKAGES
+        once Kai adds a 'site' or 'customer' field to the JSON export. For now it reads
+        the customer field from the data and shows a dropdown of belt names.
+      -->
       <div class="breadcrumb-nav">
         <span class="bc-item">Peel Ports</span>
         <span class="bc-sep">›</span>
@@ -103,80 +209,130 @@
       </div>
 
       <div class="search-box">
-        <input type="text" id="searchInput" placeholder="e.g. RB1 Drive, ELV 3 Boot, BB1 Tail…" autocomplete="off">
+        <input type="search" id="searchInput" placeholder="e.g. RB1 Drive, ELV 3 Boot, BB1 Tail…" autocomplete="off" spellcheck="false">
         <button onclick="doSearch()">Search</button>
       </div>
-      <div id="results"></div>
+
+      <div id="results" aria-live="polite"></div>
+
     </div>
   </section>
 
-  <!-- Brands -->
-  <div class="brands-strip">
-    <p>Authorised to supply</p>
-    <span class="brand-name">SK<span>F</span></span>
-    <span class="brand-name" style="opacity:0.4; font-size:1rem; color:rgba(255,255,255,0.4)">More brands coming soon</span>
-  </div>
 
-  <!-- Contact -->
+  <!-- ================================================================
+       BRANDS
+       ================================================================ -->
+  <section class="brands-section" id="brands">
+    <div class="container">
+      <!-- PLACEHOLDER: Vera to supply copy for this section -->
+      <p class="brands-eyebrow">Authorised to supply</p>
+      <div class="brands-row">
+        <!--
+          PLACEHOLDER: Replace .brand-name-mock with official SKF logo SVG/PNG.
+          Download from skf.com brand assets and save as assets/skf-logo-white.svg, then use:
+          <img src="assets/skf-logo-white.svg" alt="SKF" class="brand-logo" width="120" height="48">
+        -->
+        <div class="brand-name-mock" aria-label="SKF (logo placeholder)">SK<span>F</span></div>
+        <!-- PLACEHOLDER: Add further brand logos here as supplier relationships are confirmed -->
+        <span class="brand-coming-soon">More brands coming soon</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================================================================
+       CONTACT / QUOTE FORM
+       ================================================================ -->
   <section class="section section-contact" id="contact">
     <div class="container">
-      <h2>Get a quote.</h2>
-      <p class="section-intro">Tell us your site, your equipment, and we'll get back to you with a complete package price.</p>
+
+      <h2>Can't find your machine?</h2>
+      <p class="section-intro">Not every piece of kit is listed yet — but that's not a problem. Tell us the equipment and we'll put the right pack together. No pressure. No sales pitch. Just parts.</p>
+
       <div class="contact-options">
-        <a href="tel:+44" class="contact-btn">📞 Call us</a>
-        <a href="mailto:info@allpartsltd.co.uk" class="contact-btn">✉ Email us</a>
+        <!-- PLACEHOLDER: Replace href values with real phone number and email address -->
+        <a href="tel:+44" class="contact-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.42 2 2 0 0 1 3.62 1.22h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6.1 6.1l.97-.97a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call us
+        </a>
+        <a href="mailto:info@allpartsltd.co.uk" class="contact-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email us
+        </a>
       </div>
-      <form class="contact-form" onsubmit="return false;">
+
+      <!--
+        PLACEHOLDER: Wire this form to a real backend/email handler before launch.
+        Options: Formspree (add action="https://formspree.io/f/XXXXX"), Netlify Forms,
+        a PHP mailer, or a serverless function. Update the action attribute accordingly.
+      -->
+      <form class="contact-form" id="contact-form" onsubmit="handleFormSubmit(event)">
         <div class="form-row">
-          <label for="name">Your name</label>
-          <input type="text" id="name" name="name" placeholder="e.g. John Smith">
+          <label for="f-name">Your name</label>
+          <input type="text" id="f-name" name="name" placeholder="e.g. John Smith" autocomplete="name">
         </div>
         <div class="form-row">
-          <label for="company">Company / Site</label>
-          <input type="text" id="company" name="company" placeholder="e.g. Royal Seaforth Grain Terminal">
+          <label for="f-company">Company / Site</label>
+          <input type="text" id="f-company" name="company" placeholder="e.g. Royal Seaforth Grain Terminal" autocomplete="organization">
         </div>
         <div class="form-row">
-          <label for="equipment">Equipment name</label>
-          <input type="text" id="equipment" name="equipment" placeholder="e.g. RB1 Drive, Conveyor 3 Tail">
+          <label for="f-equipment">Equipment name</label>
+          <input type="text" id="f-equipment" name="equipment" placeholder="e.g. RB1 Drive, Conveyor 3 Tail">
         </div>
         <div class="form-row">
-          <label for="phone">Phone number</label>
-          <input type="tel" id="phone" name="phone" placeholder="We'll call you back">
+          <label for="f-phone">Phone number</label>
+          <input type="tel" id="f-phone" name="phone" placeholder="We'll call you back" autocomplete="tel">
         </div>
         <div class="form-row">
-          <label for="notes">Anything else?</label>
-          <textarea id="notes" name="notes" rows="3" placeholder="Shaft size, urgency, anything useful"></textarea>
+          <label for="f-notes">Anything else?</label>
+          <textarea id="f-notes" name="notes" rows="3" placeholder="Shaft size, urgency, anything useful"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Send enquiry</button>
+        <!-- Success/error message injected here by app.js -->
+        <div id="form-status" class="form-status" role="alert" aria-live="polite"></div>
         <p class="form-note">We'll respond same day where possible.</p>
       </form>
+
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="site-footer">
     <div class="container">
+      <!-- PLACEHOLDER: Replace with final logo, real contact details, and company registration number -->
       <p><strong>All Parts Ltd</strong></p>
       <p>Industrial Bearing Packages · SKF Authorised · UK Wide</p>
+      <!-- PLACEHOLDER: Replace with real email address -->
       <p><a href="mailto:info@allpartsltd.co.uk">info@allpartsltd.co.uk</a></p>
-      <p class="footer-copy">© 2026 All Parts Ltd. All rights reserved.</p>
+      <!-- PLACEHOLDER: Add company registration number when incorporated -->
+      <p class="footer-reg">Company No. 00000000 · Registered in England &amp; Wales</p>
+      <p class="footer-copy">&copy; <span id="footer-year"></span> All Parts Ltd. All rights reserved.</p>
+      <!-- PLACEHOLDER: Add Privacy Policy and Terms pages before launch -->
     </div>
   </footer>
 
-  <!-- Basket overlay -->
+
+  <!-- ================================================================
+       BASKET OVERLAY + PANEL
+       (shown when user clicks basket button in header)
+       ================================================================ -->
   <div class="basket-overlay" id="basketOverlay" onclick="toggleBasket()"></div>
 
-  <!-- Basket panel -->
-  <div class="basket-panel" id="basketPanel">
+  <div class="basket-panel" id="basketPanel" role="dialog" aria-label="Your basket" aria-modal="true">
     <div class="basket-panel-header">
       <span class="basket-panel-title">Your basket</span>
-      <button class="basket-close" onclick="toggleBasket()">✕</button>
+      <button class="basket-close" onclick="toggleBasket()" aria-label="Close basket">✕</button>
     </div>
     <div class="basket-items" id="basketItems">
       <p class="basket-empty">Your basket is empty.<br>Find equipment above and add parts.</p>
     </div>
     <div class="basket-panel-footer" id="basketFooter"></div>
   </div>
+
+
 
   <script src="app.js"></script>
 </body>

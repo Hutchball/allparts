@@ -1,4 +1,22 @@
+// ================================================================
 // All Parts Ltd — app.js
+// ================================================================
+//
+// DATA: The PACKAGES array below was provided by Kai from the
+// rewires.db / all_parts.db export. This is REAL data for Royal
+// Seaforth Grain Terminal (Peel Ports).
+//
+// TO SWAP IN KAI'S NEXT JSON EXPORT:
+//   1. Replace the entire PACKAGES array with the new export.
+//   2. The rest of the JS reads the data dynamically — no other
+//      changes needed as long as the field names stay the same.
+//
+// EXPECTED FIELDS PER RECORD:
+//   customer, equipment, shaft_imperial, shaft_mm, shaft_type,
+//   pulley_dia, bearing, bore_mm, od_mm, width_mm, c_kn, c0_kn,
+//   housing, taper_lock, seal, grease_type, includes_gun,
+//   includes_spanner, includes_bolts, notes
+// ================================================================
 
 const PACKAGES = [
   {"customer":"Royal Seaforth Grain Terminal","equipment":"BB1 BEND","shaft_imperial":"2 3/4\"","shaft_mm":69.85,"shaft_type":"imperial","pulley_dia":"18\"","bearing":"22216 E","bore_mm":80.0,"od_mm":140.0,"width_mm":33.0,"c_kn":290.0,"c0_kn":355.0,"housing":"SN 22516E","taper_lock":"H316","seal":null,"grease_type":"SKF LGEP2","includes_gun":1,"includes_spanner":1,"includes_bolts":1,"notes":""},
@@ -32,26 +50,37 @@ const PACKAGES = [
   {"customer":"Royal Seaforth Grain Terminal","equipment":"RB9 GTU","shaft_imperial":"3\"","shaft_mm":76.2,"shaft_type":"imperial","pulley_dia":"18\"","bearing":"22217 E","bore_mm":85.0,"od_mm":150.0,"width_mm":36.0,"c_kn":340.0,"c0_kn":415.0,"housing":null,"taper_lock":"HE317","seal":null,"grease_type":"SKF LGEP2","includes_gun":1,"includes_spanner":1,"includes_bolts":1,"notes":"H317T/L"}
 ];
 
-// ---- Helpers ----
+
+// ================================================================
+// HELPERS
+// ================================================================
 
 const POSITIONS = ['DRIVE', 'SNUB', 'TAIL', 'BOOT', 'BEND', 'GTU'];
 
+// Extract the belt name from an equipment string (strips the position suffix)
 function getBelt(equipment) {
   const parts = equipment.toUpperCase().split(' ');
   if (POSITIONS.includes(parts[parts.length - 1])) return parts.slice(0, -1).join(' ');
   return equipment.toUpperCase();
 }
 
+// A kit is "complete" if it has a bearing + taper lock + (housing or seal)
 function isComplete(pkg) {
   return !!(pkg.bearing && pkg.taper_lock && (pkg.housing || pkg.seal));
 }
 
-// ---- Card renderer ----
+
+// ================================================================
+// CARD RENDERER
+// ================================================================
 
 function partItem(eq, type, label, displayLabel, value, extra) {
+  // eq and label are escaped into an attribute — strip quotes for safety
+  const safeEq    = eq.replace(/'/g, '\\\'');
+  const safeLabel = label.replace(/'/g, '\\\'');
   return `
     <div class="part-item">
-      <button class="part-add-btn" onclick="addPartFromCard('${eq}','${type}','${label}',this)" title="Add to basket">+</button>
+      <button class="part-add-btn" onclick="addPartFromCard('${safeEq}','${type}','${safeLabel}',this)" title="Add to basket">+</button>
       <div class="part-label">${displayLabel}</div>
       <div class="part-value">${value}</div>
       ${extra ? `<div class="part-included">${extra}</div>` : ''}
@@ -61,6 +90,8 @@ function partItem(eq, type, label, displayLabel, value, extra) {
 function renderCard(p) {
   const complete = isComplete(p);
   const eq = p.equipment;
+  const safeEq = eq.replace(/'/g, '\\\'');
+
   return `
     <div class="result-card${!complete ? ' result-card-incomplete' : ''}">
       <div class="result-header">
@@ -70,50 +101,62 @@ function renderCard(p) {
         </div>
         <div class="result-shaft">${p.shaft_type === 'imperial' ? p.shaft_imperial : p.shaft_mm + 'mm'} shaft</div>
       </div>
-      ${!complete ? '<p class="incomplete-notice">⚠ Kit data incomplete — contact us for confirmed parts list</p>' : ''}
+
+      ${!complete ? '<p class="incomplete-notice">⚠ Kit data incomplete — <a href="#contact">contact us</a> for confirmed parts list</p>' : ''}
+
       <div class="parts-grid">
-        ${p.bearing  ? partItem(eq,'bearing',  `Bearing — SKF ${p.bearing}`,       'Bearing',           `SKF ${p.bearing}`,      '✓ Included in All Parts') : ''}
-        ${p.bearing  ? `<div class="part-item"><div class="part-label">Bore × OD × Width</div><div class="part-value">${p.bore_mm}×${p.od_mm}×${p.width_mm} mm</div></div>` : ''}
-        ${p.housing  ? partItem(eq,'housing',  `Plummer Block — SKF ${p.housing}`, 'Plummer Block',     `SKF ${p.housing}`,      '✓ Included in All Parts') : ''}
-        ${p.taper_lock ? partItem(eq,'taper_lock',`Taper Lock — SKF ${p.taper_lock}`,'Taper Lock',     `SKF ${p.taper_lock}`,   '✓ Included in All Parts') : ''}
-        ${p.seal     ? partItem(eq,'seal',     `Seal — ${p.seal}`,                 'Seal',              p.seal,                  '✓ Included in All Parts') : ''}
-        ${p.grease_type ? partItem(eq,'grease',`Grease — ${p.grease_type}`,        'Grease',            p.grease_type,           '✓ Included in All Parts') : ''}
-        ${p.includes_gun     ? partItem(eq,'gun',    'Grease Gun',    'Grease Gun',    'Standard',     '✓ Included in All Parts') : ''}
-        ${p.includes_spanner ? partItem(eq,'spanner','C Spanner',     'C Spanner',     'Correct size', '✓ Included in All Parts') : ''}
-        ${p.includes_bolts   ? partItem(eq,'bolts',  'Holding Down Bolts','Holding Down Bolts','Correct grade','✓ Included in All Parts') : ''}
+        ${p.bearing    ? partItem(eq, 'bearing',    `Bearing — SKF ${p.bearing}`,       'Bearing',            `SKF ${p.bearing}`,     '✓ Included') : ''}
+        ${p.bearing    ? `<div class="part-item"><div class="part-label">Bore × OD × Width</div><div class="part-value">${p.bore_mm} × ${p.od_mm} × ${p.width_mm} mm</div></div>` : ''}
+        ${p.housing    ? partItem(eq, 'housing',    `Plummer Block — SKF ${p.housing}`, 'Plummer Block',      `SKF ${p.housing}`,     '✓ Included') : ''}
+        ${p.taper_lock ? partItem(eq, 'taper_lock', `Taper Lock — SKF ${p.taper_lock}`,'Taper Lock',         `SKF ${p.taper_lock}`,  '✓ Included') : ''}
+        ${p.seal       ? partItem(eq, 'seal',       `Seal — ${p.seal}`,                'Seal',               p.seal,                 '✓ Included') : ''}
+        ${p.grease_type ? partItem(eq, 'grease',    `Grease — ${p.grease_type}`,       'Grease',             p.grease_type,          '✓ Included') : ''}
+        ${p.includes_gun     ? partItem(eq, 'gun',     'Grease Gun',         'Grease Gun',         'Standard',     '✓ Included') : ''}
+        ${p.includes_spanner ? partItem(eq, 'spanner', 'C Spanner',          'C Spanner',          'Correct size', '✓ Included') : ''}
+        ${p.includes_bolts   ? partItem(eq, 'bolts',   'Holding Down Bolts', 'Holding Down Bolts', 'Correct grade','✓ Included') : ''}
         ${p.notes ? `<div class="part-item" style="grid-column:1/-1"><div class="part-label">Notes</div><div class="part-value" style="font-weight:500;color:var(--muted)">${p.notes}</div></div>` : ''}
       </div>
+
       <div class="card-actions">
-        <button class="card-btn card-btn-secondary" onclick="addSet('${eq}',1,this)">Buy one</button>
-        <button class="card-btn card-btn-secondary" onclick="addSet('${eq}',2,this)">Buy pair</button>
-        <button class="card-btn card-btn-primary"   onclick="addAllParts('${eq}',this)">Buy All Parts ★</button>
+        <button class="card-btn card-btn-secondary" onclick="addSet('${safeEq}', 1, this)">Buy one</button>
+        <button class="card-btn card-btn-secondary" onclick="addSet('${safeEq}', 2, this)">Buy pair</button>
+        <button class="card-btn card-btn-primary"   onclick="addAllParts('${safeEq}', this)">Buy All Parts ★</button>
       </div>
     </div>`;
 }
 
-// ---- Search ----
+
+// ================================================================
+// SEARCH
+// ================================================================
 
 function doSearch() {
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  const results = document.getElementById('results');
+  const resultsEl = document.getElementById('results');
   resetBeltBtn();
-  if (!q) { results.innerHTML = ''; return; }
+
+  if (!q) { resultsEl.innerHTML = ''; return; }
 
   const matches = PACKAGES.filter(p =>
     p.equipment.toLowerCase().includes(q) ||
-    p.customer.toLowerCase().includes(q) ||
-    (p.bearing && p.bearing.toLowerCase().includes(q)) ||
-    (p.housing  && p.housing.toLowerCase().includes(q))
+    p.customer.toLowerCase().includes(q)  ||
+    (p.bearing    && p.bearing.toLowerCase().includes(q))  ||
+    (p.housing    && p.housing.toLowerCase().includes(q))  ||
+    (p.taper_lock && p.taper_lock.toLowerCase().includes(q))
   );
 
-  results.innerHTML = matches.length
+  resultsEl.innerHTML = matches.length
     ? matches.map(renderCard).join('')
     : `<p class="no-results">No package found for "<strong>${q}</strong>". <a href="#contact">Contact us</a> and we'll build one.</p>`;
 }
 
-// ---- Breadcrumb / Belt Browse ----
+
+// ================================================================
+// BREADCRUMB / BELT BROWSE
+// ================================================================
 
 function buildBreadcrumb() {
+  // Build a map of belt → complete status
   const beltComplete = {};
   PACKAGES.forEach(p => {
     const belt = getBelt(p.equipment);
@@ -126,11 +169,13 @@ function buildBreadcrumb() {
 
   dropdown.innerHTML = Object.keys(beltComplete).sort().map(belt => {
     const ok = beltComplete[belt];
-    return `<div class="belt-option${ok ? '' : ' is-incomplete'}" onclick="selectBelt('${belt}')">
-      <span>${belt}</span>${ok ? '' : '<span class="belt-incomplete-tag">incomplete</span>'}
+    return `<div class="belt-option${ok ? '' : ' is-incomplete'}" onclick="selectBelt('${belt.replace(/'/g, '\\\'')}')">
+      <span>${belt}</span>
+      ${ok ? '' : '<span class="belt-incomplete-tag">incomplete</span>'}
     </div>`;
   }).join('');
 
+  // Close dropdown when clicking outside
   document.addEventListener('click', e => {
     const wrap = document.getElementById('beltSelectWrap');
     if (wrap && !wrap.contains(e.target)) closeBeltDropdown();
@@ -162,27 +207,33 @@ function selectBelt(belt) {
 
   const matches = PACKAGES.filter(p => getBelt(p.equipment) === belt);
   const hasIncomplete = matches.some(p => !isComplete(p));
-  const results = document.getElementById('results');
+  const resultsEl = document.getElementById('results');
 
-  results.innerHTML = `
+  resultsEl.innerHTML = `
     <div class="belt-results-header">
       <span class="belt-results-title">${belt} — ${matches.length} position${matches.length !== 1 ? 's' : ''}</span>
-      ${hasIncomplete ? '<span class="belt-incomplete-badge">data incomplete</span>' : ''}
+      ${hasIncomplete ? '<span class="belt-incomplete-badge">some data incomplete</span>' : ''}
     </div>
     ${matches.map(renderCard).join('')}`;
 
-  results.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  resultsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// ---- Basket ----
+
+// ================================================================
+// BASKET
+// ================================================================
 
 let basketItems = [];
 let _nextId = 0;
 
 function addToBasket({ equipment, label, type, qty = 1 }) {
   const existing = basketItems.find(i => i.equipment === equipment && i.label === label);
-  if (existing) { existing.qty += qty; }
-  else { basketItems.push({ id: ++_nextId, equipment, label, type, qty }); }
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    basketItems.push({ id: ++_nextId, equipment, label, type, qty });
+  }
   updateBasketBtn();
   renderBasket();
 }
@@ -219,7 +270,7 @@ function renderBasket() {
 
   if (!basketItems.length) {
     itemsEl.innerHTML  = '<p class="basket-empty">Your basket is empty.<br>Find equipment above and add parts.</p>';
-    footerEl.innerHTML = '';
+    if (footerEl) footerEl.innerHTML = '';
     return;
   }
 
@@ -230,18 +281,20 @@ function renderBasket() {
         <div class="basket-item-eq">${item.equipment}</div>
       </div>
       <div class="basket-item-qty">
-        <button onclick="changeQty(${item.id},-1)">−</button>
+        <button onclick="changeQty(${item.id}, -1)" aria-label="Decrease quantity">−</button>
         <span>${item.qty}</span>
-        <button onclick="changeQty(${item.id},1)">+</button>
+        <button onclick="changeQty(${item.id}, 1)"  aria-label="Increase quantity">+</button>
       </div>
-      <button class="basket-item-remove" onclick="removeFromBasket(${item.id})" title="Remove">✕</button>
+      <button class="basket-item-remove" onclick="removeFromBasket(${item.id})" title="Remove item">✕</button>
     </div>`).join('');
 
   const total = basketItems.reduce((s, i) => s + i.qty, 0);
-  footerEl.innerHTML = `
-    <div class="basket-total">${total} item${total !== 1 ? 's' : ''} in basket</div>
-    <button class="btn btn-primary basket-enquire-btn" onclick="enquireBasket()">Enquire about basket →</button>
-    <button class="basket-clear-btn" onclick="clearBasket()">Empty basket</button>`;
+  if (footerEl) {
+    footerEl.innerHTML = `
+      <div class="basket-total">${total} item${total !== 1 ? 's' : ''} in basket</div>
+      <button class="btn btn-primary basket-enquire-btn" onclick="enquireBasket()">Enquire about basket →</button>
+      <button class="basket-clear-btn" onclick="clearBasket()">Empty basket</button>`;
+  }
 }
 
 function clearBasket() {
@@ -256,25 +309,31 @@ function toggleBasket() {
   if (!panel) return;
   const opening = !panel.classList.contains('open');
   panel.classList.toggle('open', opening);
-  overlay.classList.toggle('open', opening);
+  if (overlay) overlay.classList.toggle('open', opening);
   document.body.style.overflow = opening ? 'hidden' : '';
 }
 
+// Copies basket contents into the contact form's notes field, then scrolls to it
 function enquireBasket() {
   const lines = basketItems.map(i => `• ${i.label} ×${i.qty}  (${i.equipment})`).join('\n');
-  const notesEl = document.getElementById('notes');
+  const notesEl = document.getElementById('f-notes');
   if (notesEl) notesEl.value = lines;
   toggleBasket();
-  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  const contactEl = document.getElementById('contact');
+  if (contactEl) contactEl.scrollIntoView({ behavior: 'smooth' });
 }
 
-// ---- Add helpers ----
+
+// ================================================================
+// BASKET ADD HELPERS
+// ================================================================
 
 function addPartFromCard(equipment, type, label, el) {
   addToBasket({ equipment, label, type });
   flyToBasket(el);
 }
 
+// Add one bearing + taper lock (+ seal if present) for the given equipment
 function addSet(equipment, qty, el) {
   const p = PACKAGES.find(x => x.equipment === equipment);
   if (!p) return;
@@ -284,22 +343,26 @@ function addSet(equipment, qty, el) {
   flyToBasket(el);
 }
 
+// Add the complete All Parts kit (2× bearing set + all accessories)
 function addAllParts(equipment, el) {
   const p = PACKAGES.find(x => x.equipment === equipment);
   if (!p) return;
-  if (p.bearing)    addToBasket({ equipment, label: `Bearing — SKF ${p.bearing}`,       type: 'bearing',    qty: 2 });
-  if (p.housing)    addToBasket({ equipment, label: `Plummer Block — SKF ${p.housing}`, type: 'housing',    qty: 2 });
-  if (p.taper_lock) addToBasket({ equipment, label: `Taper Lock — SKF ${p.taper_lock}`, type: 'taper_lock', qty: 2 });
-  if (p.seal)       addToBasket({ equipment, label: `Seal Pack — ${p.seal}`,             type: 'seal',       qty: 1 });
-                    addToBasket({ equipment, label: `Grease (5 tubes) — ${p.grease_type || 'SKF LGEP2'}`, type: 'grease', qty: 2 });
-                    addToBasket({ equipment, label: 'Grease Gun',                        type: 'gun',        qty: 1 });
-                    addToBasket({ equipment, label: 'Holding Down Bolts (pair)',         type: 'bolts',      qty: 1 });
-                    addToBasket({ equipment, label: 'Washers (small pack)',              type: 'washer',     qty: 1 });
-                    addToBasket({ equipment, label: 'Nuts (pair)',                       type: 'nut',        qty: 1 });
+  if (p.bearing)    addToBasket({ equipment, label: `Bearing — SKF ${p.bearing}`,           type: 'bearing',    qty: 2 });
+  if (p.housing)    addToBasket({ equipment, label: `Plummer Block — SKF ${p.housing}`,     type: 'housing',    qty: 2 });
+  if (p.taper_lock) addToBasket({ equipment, label: `Taper Lock — SKF ${p.taper_lock}`,     type: 'taper_lock', qty: 2 });
+  if (p.seal)       addToBasket({ equipment, label: `Seal Pack — ${p.seal}`,                type: 'seal',       qty: 1 });
+                    addToBasket({ equipment, label: `Grease — ${p.grease_type || 'SKF LGEP2'}`, type: 'grease', qty: 2 });
+                    addToBasket({ equipment, label: 'Grease Gun',                            type: 'gun',        qty: 1 });
+                    addToBasket({ equipment, label: 'Holding Down Bolts',                    type: 'bolts',      qty: 1 });
+                    addToBasket({ equipment, label: 'Washers',                               type: 'washer',     qty: 1 });
+                    addToBasket({ equipment, label: 'Nuts',                                  type: 'nut',        qty: 1 });
   flyToBasket(el);
 }
 
-// ---- Animation ----
+
+// ================================================================
+// FLY-TO-BASKET ANIMATION
+// ================================================================
 
 function flyToBasket(sourceEl) {
   const btn = document.getElementById('basketBtn');
@@ -313,7 +376,7 @@ function flyToBasket(sourceEl) {
     'position:fixed',
     `left:${src.left + src.width  / 2}px`,
     `top:${src.top  + src.height / 2}px`,
-    'width:22px','height:22px',
+    'width:20px', 'height:20px',
     'background:#16a34a',
     'border-radius:50%',
     'z-index:9999',
@@ -322,7 +385,7 @@ function flyToBasket(sourceEl) {
   ].join(';');
   document.body.appendChild(dot);
 
-  dot.getBoundingClientRect(); // force reflow
+  dot.getBoundingClientRect(); // force reflow before animating
   dot.style.transition = [
     'left 0.52s cubic-bezier(0.4,0,0.2,1)',
     'top 0.52s cubic-bezier(0.4,0,0.2,1)',
@@ -341,12 +404,86 @@ function flyToBasket(sourceEl) {
   }, 560);
 }
 
-// ---- Init ----
+
+// ================================================================
+// MOBILE NAV TOGGLE
+// ================================================================
+
+function openNav() {
+  document.body.classList.add('nav-open');
+  const toggle = document.getElementById('nav-toggle');
+  if (toggle) toggle.setAttribute('aria-expanded', 'true');
+}
+
+function closeNav() {
+  document.body.classList.remove('nav-open');
+  const toggle = document.getElementById('nav-toggle');
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+}
+
+function bindNavToggle() {
+  const toggle = document.getElementById('nav-toggle');
+  if (!toggle) return;
+  toggle.addEventListener('click', () => {
+    document.body.classList.contains('nav-open') ? closeNav() : openNav();
+  });
+  // Close nav when any nav link is clicked (smooth scroll + closes panel)
+  document.querySelectorAll('.main-nav a').forEach(a => {
+    a.addEventListener('click', () => closeNav());
+  });
+}
+
+
+// ================================================================
+// CONTACT FORM
+// PLACEHOLDER: Replace this stub with a real submission handler
+// once the form backend is wired up (Formspree, PHP mailer, etc.)
+// ================================================================
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const statusEl = document.getElementById('form-status');
+
+  // PLACEHOLDER: Replace the setTimeout below with a real fetch/XHR call.
+  // Example with Formspree:
+  //   const form = e.target;
+  //   fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+  //     .then(r => r.ok ? showSuccess() : showError())
+  //     .catch(() => showError());
+
+  if (statusEl) {
+    statusEl.textContent = '✓ Enquiry sent — we\'ll be in touch shortly.';
+    statusEl.className = 'form-status success';
+  }
+  e.target.reset();
+}
+
+
+// ================================================================
+// INIT
+// ================================================================
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // Set footer year dynamically
+  const yearEl = document.getElementById('footer-year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Build the belt browse dropdown from PACKAGES data
   buildBreadcrumb();
+
+  // Render an empty basket
   renderBasket();
-  document.getElementById('searchInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') doSearch();
-  });
+
+  // Search on Enter key
+  const searchInput = document.getElementById('searchInput');
+  if (searchInput) {
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+  }
+
+  // Mobile nav
+  bindNavToggle();
+
 });

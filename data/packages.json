@@ -1,0 +1,1306 @@
+{
+  "generated": "2026-05-11",
+  "version": "1.0",
+  "customers": [
+    {
+      "name": "Royal Seaforth Grain Terminal",
+      "equipment": [
+        {
+          "id": 21,
+          "equipment": {
+            "id": 21,
+            "name": "BB1 BEND",
+            "shaft": {
+              "imperial": "2 3/4\"",
+              "mm": 69.85,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22216 E",
+            "type": "spherical_roller",
+            "bore_mm": 80.0,
+            "od_mm": 140.0,
+            "width_mm": 33.0,
+            "c_kn": 290.0,
+            "c0_kn": 355.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22516E",
+            "type": "SN",
+            "bore_mm": 80.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H316",
+            "bearing_bore_mm": 80.0,
+            "shaft_imperial": "2 3/4\"",
+            "shaft_mm": 69.85
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 17,
+          "equipment": {
+            "id": 17,
+            "name": "BB1 DRIVE",
+            "shaft": {
+              "imperial": "4\"",
+              "mm": 101.6,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22222 E",
+            "type": "spherical_roller",
+            "bore_mm": 110.0,
+            "od_mm": 200.0,
+            "width_mm": 53.0,
+            "c_kn": 620.0,
+            "c0_kn": 800.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22522E",
+            "type": "SN",
+            "bore_mm": 110.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H322",
+            "bearing_bore_mm": 110.0,
+            "shaft_imperial": "4\"",
+            "shaft_mm": 101.6
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 20,
+          "equipment": {
+            "id": 20,
+            "name": "BB1 SNUB",
+            "shaft": {
+              "imperial": "2 3/4\"",
+              "mm": 69.85,
+              "type": "imperial"
+            },
+            "pulley_dia": "14\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22216 E",
+            "type": "spherical_roller",
+            "bore_mm": 80.0,
+            "od_mm": 140.0,
+            "width_mm": 33.0,
+            "c_kn": 290.0,
+            "c0_kn": 355.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22516E",
+            "type": "SN",
+            "bore_mm": 80.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H316",
+            "bearing_bore_mm": 80.0,
+            "shaft_imperial": "2 3/4\"",
+            "shaft_mm": 69.85
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 22,
+          "equipment": {
+            "id": 22,
+            "name": "BB1 TAIL",
+            "shaft": {
+              "imperial": "2 1/2\"",
+              "mm": 63.5,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22215 E",
+            "type": "spherical_roller",
+            "bore_mm": 75.0,
+            "od_mm": 130.0,
+            "width_mm": 31.0,
+            "c_kn": 242.0,
+            "c0_kn": 290.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22515E",
+            "type": "SN",
+            "bore_mm": 75.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "HE315",
+            "bearing_bore_mm": 75.0,
+            "shaft_imperial": "2 1/2\"",
+            "shaft_mm": 63.5
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 18,
+          "equipment": {
+            "id": 18,
+            "name": "BB2 DRIVE",
+            "shaft": {
+              "imperial": "4\"",
+              "mm": 101.6,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22222 E",
+            "type": "spherical_roller",
+            "bore_mm": 110.0,
+            "od_mm": 200.0,
+            "width_mm": 53.0,
+            "c_kn": 620.0,
+            "c0_kn": 800.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22522E",
+            "type": "SN",
+            "bore_mm": 110.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H322",
+            "bearing_bore_mm": 110.0,
+            "shaft_imperial": "4\"",
+            "shaft_mm": 101.6
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 19,
+          "equipment": {
+            "id": 19,
+            "name": "BB3 DRIVE",
+            "shaft": {
+              "imperial": "4\"",
+              "mm": 101.6,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22222 E",
+            "type": "spherical_roller",
+            "bore_mm": 110.0,
+            "od_mm": 200.0,
+            "width_mm": 53.0,
+            "c_kn": 620.0,
+            "c0_kn": 800.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22522E",
+            "type": "SN",
+            "bore_mm": 110.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H322",
+            "bearing_bore_mm": 110.0,
+            "shaft_imperial": "4\"",
+            "shaft_mm": 101.6
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 23,
+          "equipment": {
+            "id": 23,
+            "name": "ELV 1 BOOT",
+            "shaft": {
+              "imperial": "3 1/2\"",
+              "mm": 88.9,
+              "type": "imperial"
+            },
+            "pulley_dia": "48\"",
+            "notes": "Full kit confirmed"
+          },
+          "bearing": {
+            "designation": "22220 E",
+            "type": "spherical_roller",
+            "bore_mm": 100.0,
+            "od_mm": 180.0,
+            "width_mm": 46.0,
+            "c_kn": 510.0,
+            "c0_kn": 640.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SNL520-617",
+            "type": "SNL",
+            "bore_mm": 100.0,
+            "sealed": true
+          },
+          "taper_lock": {
+            "designation": "HE320",
+            "bearing_bore_mm": 100.0,
+            "shaft_imperial": "3 1/2\"",
+            "shaft_mm": 88.9
+          },
+          "seal": "TSN520L",
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "Full kit confirmed"
+        },
+        {
+          "id": 24,
+          "equipment": {
+            "id": 24,
+            "name": "ELV 2 BOOT",
+            "shaft": {
+              "imperial": "3 1/2\"",
+              "mm": 88.9,
+              "type": "imperial"
+            },
+            "pulley_dia": "48\"",
+            "notes": "Full kit confirmed"
+          },
+          "bearing": {
+            "designation": "22220 E",
+            "type": "spherical_roller",
+            "bore_mm": 100.0,
+            "od_mm": 180.0,
+            "width_mm": 46.0,
+            "c_kn": 510.0,
+            "c0_kn": 640.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SNL520-617",
+            "type": "SNL",
+            "bore_mm": 100.0,
+            "sealed": true
+          },
+          "taper_lock": {
+            "designation": "HE320",
+            "bearing_bore_mm": 100.0,
+            "shaft_imperial": "3 1/2\"",
+            "shaft_mm": 88.9
+          },
+          "seal": "TSN520L",
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "Full kit confirmed"
+        },
+        {
+          "id": 25,
+          "equipment": {
+            "id": 25,
+            "name": "ELV 3 BOOT",
+            "shaft": {
+              "imperial": "3 1/2\"",
+              "mm": 88.9,
+              "type": "imperial"
+            },
+            "pulley_dia": "48\"",
+            "notes": "Full kit confirmed"
+          },
+          "bearing": {
+            "designation": "22220 E",
+            "type": "spherical_roller",
+            "bore_mm": 100.0,
+            "od_mm": 180.0,
+            "width_mm": 46.0,
+            "c_kn": 510.0,
+            "c0_kn": 640.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SNL520-617",
+            "type": "SNL",
+            "bore_mm": 100.0,
+            "sealed": true
+          },
+          "taper_lock": {
+            "designation": "HE320",
+            "bearing_bore_mm": 100.0,
+            "shaft_imperial": "3 1/2\"",
+            "shaft_mm": 88.9
+          },
+          "seal": "TSN520L",
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "Full kit confirmed"
+        },
+        {
+          "id": 26,
+          "equipment": {
+            "id": 26,
+            "name": "ELV 4 BOOT",
+            "shaft": {
+              "imperial": "3 1/2\"",
+              "mm": 88.9,
+              "type": "imperial"
+            },
+            "pulley_dia": "48\"",
+            "notes": "Full kit confirmed"
+          },
+          "bearing": {
+            "designation": "22220 E",
+            "type": "spherical_roller",
+            "bore_mm": 100.0,
+            "od_mm": 180.0,
+            "width_mm": 46.0,
+            "c_kn": 510.0,
+            "c0_kn": 640.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SNL520-617",
+            "type": "SNL",
+            "bore_mm": 100.0,
+            "sealed": true
+          },
+          "taper_lock": {
+            "designation": "HE320",
+            "bearing_bore_mm": 100.0,
+            "shaft_imperial": "3 1/2\"",
+            "shaft_mm": 88.9
+          },
+          "seal": "TSN520L",
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "Full kit confirmed"
+        },
+        {
+          "id": 27,
+          "equipment": {
+            "id": 27,
+            "name": "MC2 GTU",
+            "shaft": {
+              "imperial": "2 1/2\"",
+              "mm": 63.5,
+              "type": "imperial"
+            },
+            "pulley_dia": "16\"",
+            "notes": "Full kit confirmed"
+          },
+          "bearing": {
+            "designation": "22215 E",
+            "type": "spherical_roller",
+            "bore_mm": 75.0,
+            "od_mm": 130.0,
+            "width_mm": 31.0,
+            "c_kn": 242.0,
+            "c0_kn": 290.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN515-612",
+            "type": "SNL",
+            "bore_mm": 75.0,
+            "sealed": true
+          },
+          "taper_lock": {
+            "designation": "HE315",
+            "bearing_bore_mm": 75.0,
+            "shaft_imperial": "2 1/2\"",
+            "shaft_mm": 63.5
+          },
+          "seal": "TSN515L",
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "Full kit confirmed"
+        },
+        {
+          "id": 1,
+          "equipment": {
+            "id": 1,
+            "name": "RB1 DRIVE",
+            "shaft": {
+              "imperial": "3 1/4\"",
+              "mm": 82.55,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22218 E",
+            "type": "spherical_roller",
+            "bore_mm": 90.0,
+            "od_mm": 160.0,
+            "width_mm": 40.0,
+            "c_kn": 400.0,
+            "c0_kn": 490.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22518E",
+            "type": "SN",
+            "bore_mm": 90.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H318",
+            "bearing_bore_mm": 90.0,
+            "shaft_imperial": "3 1/4\"",
+            "shaft_mm": 82.55
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 8,
+          "equipment": {
+            "id": 8,
+            "name": "RB1 SNUB",
+            "shaft": {
+              "imperial": "2 1/4\"",
+              "mm": 57.15,
+              "type": "imperial"
+            },
+            "pulley_dia": "16\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22213 E",
+            "type": "spherical_roller",
+            "bore_mm": 65.0,
+            "od_mm": 120.0,
+            "width_mm": 31.0,
+            "c_kn": 224.0,
+            "c0_kn": 260.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22513E",
+            "type": "SN",
+            "bore_mm": 65.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H313",
+            "bearing_bore_mm": 65.0,
+            "shaft_imperial": "2 1/4\"",
+            "shaft_mm": 57.15
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 13,
+          "equipment": {
+            "id": 13,
+            "name": "RB1 TAIL",
+            "shaft": {
+              "imperial": "2 1/2\"",
+              "mm": 63.5,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22213 E",
+            "type": "spherical_roller",
+            "bore_mm": 65.0,
+            "od_mm": 120.0,
+            "width_mm": 31.0,
+            "c_kn": 224.0,
+            "c0_kn": 260.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22513E",
+            "type": "SN",
+            "bore_mm": 65.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H313",
+            "bearing_bore_mm": 65.0,
+            "shaft_imperial": "2 1/4\"",
+            "shaft_mm": 57.15
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 2,
+          "equipment": {
+            "id": 2,
+            "name": "RB2 DRIVE",
+            "shaft": {
+              "imperial": "3 1/4\"",
+              "mm": 82.55,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22218 E",
+            "type": "spherical_roller",
+            "bore_mm": 90.0,
+            "od_mm": 160.0,
+            "width_mm": 40.0,
+            "c_kn": 400.0,
+            "c0_kn": 490.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22518E",
+            "type": "SN",
+            "bore_mm": 90.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H318",
+            "bearing_bore_mm": 90.0,
+            "shaft_imperial": "3 1/4\"",
+            "shaft_mm": 82.55
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 9,
+          "equipment": {
+            "id": 9,
+            "name": "RB2 SNUB",
+            "shaft": {
+              "imperial": "2 1/4\"",
+              "mm": 57.15,
+              "type": "imperial"
+            },
+            "pulley_dia": "16\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22213 E",
+            "type": "spherical_roller",
+            "bore_mm": 65.0,
+            "od_mm": 120.0,
+            "width_mm": 31.0,
+            "c_kn": 224.0,
+            "c0_kn": 260.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22513E",
+            "type": "SN",
+            "bore_mm": 65.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H313",
+            "bearing_bore_mm": 65.0,
+            "shaft_imperial": "2 1/4\"",
+            "shaft_mm": 57.15
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 14,
+          "equipment": {
+            "id": 14,
+            "name": "RB2 TAIL",
+            "shaft": {
+              "imperial": "2 1/2\"",
+              "mm": 63.5,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": "Now 22215/HE315"
+          },
+          "bearing": {
+            "designation": "22215 E",
+            "type": "spherical_roller",
+            "bore_mm": 75.0,
+            "od_mm": 130.0,
+            "width_mm": 31.0,
+            "c_kn": 242.0,
+            "c0_kn": 290.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22513E",
+            "type": "SN",
+            "bore_mm": 65.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "HE315",
+            "bearing_bore_mm": 75.0,
+            "shaft_imperial": "2 1/2\"",
+            "shaft_mm": 63.5
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "Now 22215/HE315"
+        },
+        {
+          "id": 3,
+          "equipment": {
+            "id": 3,
+            "name": "RB3 DRIVE",
+            "shaft": {
+              "imperial": "3 1/4\"",
+              "mm": 82.55,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22218 E",
+            "type": "spherical_roller",
+            "bore_mm": 90.0,
+            "od_mm": 160.0,
+            "width_mm": 40.0,
+            "c_kn": 400.0,
+            "c0_kn": 490.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22518E",
+            "type": "SN",
+            "bore_mm": 90.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H318",
+            "bearing_bore_mm": 90.0,
+            "shaft_imperial": "3 1/4\"",
+            "shaft_mm": 82.55
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 10,
+          "equipment": {
+            "id": 10,
+            "name": "RB3 SNUB",
+            "shaft": {
+              "imperial": "2\"",
+              "mm": 50.8,
+              "type": "imperial"
+            },
+            "pulley_dia": "16\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22211 E",
+            "type": "spherical_roller",
+            "bore_mm": 55.0,
+            "od_mm": 100.0,
+            "width_mm": 25.0,
+            "c_kn": 156.0,
+            "c0_kn": 176.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22511E",
+            "type": "SN",
+            "bore_mm": 55.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H311",
+            "bearing_bore_mm": 55.0,
+            "shaft_imperial": "2\"",
+            "shaft_mm": 50.8
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 4,
+          "equipment": {
+            "id": 4,
+            "name": "RB4 DRIVE",
+            "shaft": {
+              "imperial": "3 1/4\"",
+              "mm": 82.55,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22218 E",
+            "type": "spherical_roller",
+            "bore_mm": 90.0,
+            "od_mm": 160.0,
+            "width_mm": 40.0,
+            "c_kn": 400.0,
+            "c0_kn": 490.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22518E",
+            "type": "SN",
+            "bore_mm": 90.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H318",
+            "bearing_bore_mm": 90.0,
+            "shaft_imperial": "3 1/4\"",
+            "shaft_mm": 82.55
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 11,
+          "equipment": {
+            "id": 11,
+            "name": "RB4 SNUB",
+            "shaft": {
+              "imperial": "2\"",
+              "mm": 50.8,
+              "type": "imperial"
+            },
+            "pulley_dia": "16\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22211 E",
+            "type": "spherical_roller",
+            "bore_mm": 55.0,
+            "od_mm": 100.0,
+            "width_mm": 25.0,
+            "c_kn": 156.0,
+            "c0_kn": 176.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22511E",
+            "type": "SN",
+            "bore_mm": 55.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H311",
+            "bearing_bore_mm": 55.0,
+            "shaft_imperial": "2\"",
+            "shaft_mm": 50.8
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 5,
+          "equipment": {
+            "id": 5,
+            "name": "RB5 DRIVE",
+            "shaft": {
+              "imperial": "3 1/2\"",
+              "mm": 88.9,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22220 E",
+            "type": "spherical_roller",
+            "bore_mm": 100.0,
+            "od_mm": 180.0,
+            "width_mm": 46.0,
+            "c_kn": 510.0,
+            "c0_kn": 640.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22520E",
+            "type": "SN",
+            "bore_mm": 100.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "HE320",
+            "bearing_bore_mm": 100.0,
+            "shaft_imperial": "3 1/2\"",
+            "shaft_mm": 88.9
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 12,
+          "equipment": {
+            "id": 12,
+            "name": "RB5 SNUB",
+            "shaft": {
+              "imperial": "2 1/4\"",
+              "mm": 57.15,
+              "type": "imperial"
+            },
+            "pulley_dia": "16\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22213 E",
+            "type": "spherical_roller",
+            "bore_mm": 65.0,
+            "od_mm": 120.0,
+            "width_mm": 31.0,
+            "c_kn": 224.0,
+            "c0_kn": 260.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22513E",
+            "type": "SN",
+            "bore_mm": 65.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H313",
+            "bearing_bore_mm": 65.0,
+            "shaft_imperial": "2 1/4\"",
+            "shaft_mm": 57.15
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 15,
+          "equipment": {
+            "id": 15,
+            "name": "RB5 TAIL",
+            "shaft": {
+              "imperial": "2 1/2\"",
+              "mm": 63.5,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22213 E",
+            "type": "spherical_roller",
+            "bore_mm": 65.0,
+            "od_mm": 120.0,
+            "width_mm": 31.0,
+            "c_kn": 224.0,
+            "c0_kn": 260.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22513E",
+            "type": "SN",
+            "bore_mm": 65.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "H313",
+            "bearing_bore_mm": 65.0,
+            "shaft_imperial": "2 1/4\"",
+            "shaft_mm": 57.15
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 6,
+          "equipment": {
+            "id": 6,
+            "name": "RB6 DRIVE",
+            "shaft": {
+              "imperial": "3 1/2\"",
+              "mm": 88.9,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22220 E",
+            "type": "spherical_roller",
+            "bore_mm": 100.0,
+            "od_mm": 180.0,
+            "width_mm": 46.0,
+            "c_kn": 510.0,
+            "c0_kn": 640.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22520E",
+            "type": "SN",
+            "bore_mm": 100.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "HE320",
+            "bearing_bore_mm": 100.0,
+            "shaft_imperial": "3 1/2\"",
+            "shaft_mm": 88.9
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 16,
+          "equipment": {
+            "id": 16,
+            "name": "RB6 TAIL",
+            "shaft": {
+              "imperial": "2 1/2\"",
+              "mm": 63.5,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": "SN22215E HE315"
+          },
+          "bearing": {
+            "designation": "22215 E",
+            "type": "spherical_roller",
+            "bore_mm": 75.0,
+            "od_mm": 130.0,
+            "width_mm": 31.0,
+            "c_kn": 242.0,
+            "c0_kn": 290.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22513E",
+            "type": "SN",
+            "bore_mm": 65.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "HE315",
+            "bearing_bore_mm": 75.0,
+            "shaft_imperial": "2 1/2\"",
+            "shaft_mm": 63.5
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "SN22215E HE315"
+        },
+        {
+          "id": 7,
+          "equipment": {
+            "id": 7,
+            "name": "RB7 DRIVE",
+            "shaft": {
+              "imperial": "3 1/2\"",
+              "mm": 88.9,
+              "type": "imperial"
+            },
+            "pulley_dia": "24\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22220 E",
+            "type": "spherical_roller",
+            "bore_mm": 100.0,
+            "od_mm": 180.0,
+            "width_mm": 46.0,
+            "c_kn": 510.0,
+            "c0_kn": 640.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": {
+            "designation": "SN 22520E",
+            "type": "SN",
+            "bore_mm": 100.0,
+            "sealed": false
+          },
+          "taper_lock": {
+            "designation": "HE320",
+            "bearing_bore_mm": 100.0,
+            "shaft_imperial": "3 1/2\"",
+            "shaft_mm": 88.9
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 28,
+          "equipment": {
+            "id": 28,
+            "name": "RB8 GTU",
+            "shaft": {
+              "imperial": "3\"",
+              "mm": 76.2,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": ""
+          },
+          "bearing": {
+            "designation": "22217 E",
+            "type": "spherical_roller",
+            "bore_mm": 85.0,
+            "od_mm": 150.0,
+            "width_mm": 36.0,
+            "c_kn": 340.0,
+            "c0_kn": 415.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": null,
+          "taper_lock": {
+            "designation": "HE317",
+            "bearing_bore_mm": 85.0,
+            "shaft_imperial": "3\"",
+            "shaft_mm": 76.2
+          },
+          "seal": "722517B",
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": ""
+        },
+        {
+          "id": 29,
+          "equipment": {
+            "id": 29,
+            "name": "RB9 GTU",
+            "shaft": {
+              "imperial": "3\"",
+              "mm": 76.2,
+              "type": "imperial"
+            },
+            "pulley_dia": "18\"",
+            "notes": "H317T/L"
+          },
+          "bearing": {
+            "designation": "22217 E",
+            "type": "spherical_roller",
+            "bore_mm": 85.0,
+            "od_mm": 150.0,
+            "width_mm": 36.0,
+            "c_kn": 340.0,
+            "c0_kn": 415.0,
+            "sealed": false,
+            "supplier": "SKF"
+          },
+          "housing": null,
+          "taper_lock": {
+            "designation": "HE317",
+            "bearing_bore_mm": 85.0,
+            "shaft_imperial": "3\"",
+            "shaft_mm": 76.2
+          },
+          "seal": null,
+          "grease_type": "SKF LGEP2",
+          "includes": {
+            "grease_gun": true,
+            "c_spanner": true,
+            "bolts": true
+          },
+          "notes": "H317T/L"
+        }
+      ]
+    }
+  ]
+}
